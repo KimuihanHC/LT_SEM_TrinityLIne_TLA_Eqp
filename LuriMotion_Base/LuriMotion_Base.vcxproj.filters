@@ -398,9 +398,6 @@
     <ClCompile Include="Ajin_IO.cpp">
       <Filter>소스 파일\Motion\Ajin</Filter>
     </ClCompile>
-    <ClCompile Include="Sequence.cpp">
-      <Filter>소스 파일\Sequence</Filter>
-    </ClCompile>
     <ClCompile Include="EzSock.cpp">
       <Filter>소스 파일\Socket</Filter>
     </ClCompile>
@@ -625,6 +622,9 @@
     </ClCompile>
     <ClCompile Include="Log\LogSemco.cpp">
       <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence.cpp">
+      <Filter>소스 파일\Socket</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

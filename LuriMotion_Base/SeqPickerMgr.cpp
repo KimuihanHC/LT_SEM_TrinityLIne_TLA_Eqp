@@ -124,7 +124,7 @@ UINT CSeqPickerMgr::RunProcess()
 	//			CString szElaped;
 				Log(_T("Picker Mgr =========> %s(end), ResultCode:%d, Elaped:%d ms"), 
 					g_szSeqName_PickerMgr[GetOldStep()],err, timer.GetElapsedTime(lt::CBasicTimer::Unit::Milliseconds));
-				SemcoLog(_T("O,-,-,Run,TLA:%s,End,Elaped=%dmsec"), g_szSeqName_PickerMgr[GetStep()], timer.GetElapsedTime(lt::CBasicTimer::Unit::Milliseconds));
+				SemcoLog(_T("O,-,-,Run,TLA:%s,End,Elaped=%dmsec"), g_szSeqName_PickerMgr[GetOldStep()], timer.GetElapsedTime(lt::CBasicTimer::Unit::Milliseconds));
 	//			WRITE_MAIN_LOG(szElaped);
 			}
 		}
@@ -275,6 +275,10 @@ enMCErrCode CSeqPickerMgr::StartOperation_Step()
 	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_VIGNETTING_46_TEST_START:
 	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_VIGNETTING_82_TEST_START:
 	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_VIGNETTING_46_END:
+	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_VIGNETTING_82_END:
+	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_LAST_OC_CHECK_START:
+	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_LAST_OC_CHECK_MOVE:
+	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_LAST_OC_CHECK_END:
 		err = StartInsp_Vignetting_46();
 		break;
 // 	case enSeqPickerMgrStep::SEQ_PICKERMGR_STEP_INSPECTION_VIGNETTING_82_MOVE_START:
