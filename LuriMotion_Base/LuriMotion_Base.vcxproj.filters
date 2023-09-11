@@ -1,0 +1,738 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Sequence">
+      <UniqueIdentifier>{039e532b-6786-40b1-8cf2-7d93ec35a7b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Socket">
+      <UniqueIdentifier>{e483a0d9-f9ad-4859-9e14-66e8101b01ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\VGBase">
+      <UniqueIdentifier>{5d2d40ce-7133-4216-b0a1-0a690f60df94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Log">
+      <UniqueIdentifier>{602dcfee-1998-4992-91f6-b7480486fb0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\LightController">
+      <UniqueIdentifier>{caabca6c-d202-4e1c-b9e7-af81f83110a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Motion">
+      <UniqueIdentifier>{dc7ba8b2-a34d-4c3e-a11b-0df369bea78a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Motion\FasTech">
+      <UniqueIdentifier>{f867d9a7-dd1d-4368-af9d-90978823cdfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Motion\Ajin">
+      <UniqueIdentifier>{6fadfc66-060d-4280-b2c9-2214b8b71388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Socket_UDP">
+      <UniqueIdentifier>{c736b20d-ea3a-4aab-aa68-67eeee632807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Define">
+      <UniqueIdentifier>{763fde71-fef1-4334-b3c2-af3a4e5354bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Sequence\UI">
+      <UniqueIdentifier>{6bbaa299-2797-4909-bc62-ecd380cc9f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\RichEditCtrlEx">
+      <UniqueIdentifier>{196b9846-31a0-49af-a87c-f0adde945002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IcsComm">
+      <UniqueIdentifier>{9027d3f9-f507-4393-ab1f-31c3adf538bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ChromaMeter">
+      <UniqueIdentifier>{3e5c1588-a164-418e-854a-4d9113644383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ChromaMeter\CL-500A">
+      <UniqueIdentifier>{3a2695e4-58c2-49e6-8831-18f6114fb498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ChromaMeter\CL-200A">
+      <UniqueIdentifier>{111d9700-890b-4d72-b7f7-660fbd115d99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Dialog_Main">
+      <UniqueIdentifier>{5d2ee70b-0089-47d5-ab7d-2623c810c36c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LuriMotion_Base.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LuriMotion_BaseDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AjinBoard.h">
+      <Filter>소스 파일\Motion\Ajin</Filter>
+    </ClInclude>
+    <ClInclude Include="Ajin_IO.h">
+      <Filter>소스 파일\Motion\Ajin</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="EzSock.h">
+      <Filter>소스 파일\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="SYSocket.h">
+      <Filter>소스 파일\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgBottom.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSide.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgTitle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="VGbase\Define_ColorTable.h">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClInclude>
+    <ClInclude Include="VGbase\Define_VGBase.h">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClInclude>
+    <ClInclude Include="VGbase\VGBase_Static.h">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClInclude>
+    <ClInclude Include="VGbase\VGBase.h">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClInclude>
+    <ClInclude Include="VGbase\VGStatic.h">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgMotorTeach.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgIo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\ExString.h">
+      <Filter>소스 파일\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\LogCommunication.h">
+      <Filter>소스 파일\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\LogSeq.h">
+      <Filter>소스 파일\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\LogSystem.h">
+      <Filter>소스 파일\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\LogBarcode.h">
+      <Filter>소스 파일\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLog.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAxisHomeProgress.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgNumPad.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgMessageBox.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgMessageBox_Instance.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_IPL_L100.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_Luri.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_PD_FN1500W_13CH.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="SerialParam.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLanguage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAdmin.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgTowerLamp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSaveAsModel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgErrorSolution.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\INI.h">
+      <Filter>소스 파일\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSleepMode.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Fastech_PR_Motion.h">
+      <Filter>소스 파일\Motion\FasTech</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_ODA_PT.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket_Udp.h">
+      <Filter>소스 파일\Socket_UDP</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_YouthTech.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_ODA_Q.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_SOL_3.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLotoMode.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="User_Define.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_CompileOption.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_Enum.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="System_Define.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_DigitalIO.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqPicker.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateUI.h">
+      <Filter>소스 파일\Sequence\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_Sequence.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqBase.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqSemiAuto.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_ErrorCode.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_Structure.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqPickerMgr.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="RichEditCtrlEx.h">
+      <Filter>소스 파일\RichEditCtrlEx</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgManualMove.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IO.h">
+      <Filter>소스 파일\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion.h">
+      <Filter>소스 파일\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="IcsCommunicator.h">
+      <Filter>IcsComm</Filter>
+    </ClInclude>
+    <ClInclude Include="IcsDef.h">
+      <Filter>IcsComm</Filter>
+    </ClInclude>
+    <ClInclude Include="CL500ACommunicator.h">
+      <Filter>소스 파일\ChromaMeter\CL-500A</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseChromaMeter.h">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer.h">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClInclude>
+    <ClInclude Include="CL200A.h">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_Chroma.h">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClInclude>
+    <ClInclude Include="Def_Chromameter.h">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClInclude>
+    <ClInclude Include="SerialPort.h">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqStartupCheck.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController_YouthTech_DPS.h">
+      <Filter>소스 파일\LightController</Filter>
+    </ClInclude>
+    <ClInclude Include="color_rgb.h">
+      <Filter>헤더 파일\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAxisView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSiMain.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSiView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgColorCalMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgDistortionMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgGhostFlareMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgHotPixelMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSFRNarrowMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSFRWideHMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSFRWideVMain.h">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSemcoComTest.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSocket.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgConfiguration.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgDeviceConfiguration.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSystemConfiguration.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCommConfiguration.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqConveyorReturn.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqConveyor1.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqConveyor2.h">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\LogSemco.h">
+      <Filter>소스 파일\Log</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LuriMotion_Base.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LuriMotion_BaseDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DataManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="AjinBoard.cpp">
+      <Filter>소스 파일\Motion\Ajin</Filter>
+    </ClCompile>
+    <ClCompile Include="Ajin_IO.cpp">
+      <Filter>소스 파일\Motion\Ajin</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="EzSock.cpp">
+      <Filter>소스 파일\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="SYSocket.cpp">
+      <Filter>소스 파일\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgBottom.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSide.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTitle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="VGbase\VGBase_Static.cpp">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClCompile>
+    <ClCompile Include="VGbase\VGBase.cpp">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClCompile>
+    <ClCompile Include="VGbase\VGStatic.cpp">
+      <Filter>소스 파일\VGBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgMotorTeach.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgIo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\ExString.cpp">
+      <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\LogCommunication.cpp">
+      <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\LogSeq.cpp">
+      <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\LogSystem.cpp">
+      <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\LogBarcode.cpp">
+      <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLog.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAxisHomeProgress.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgNumPad.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgMessageBox.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgMessageBox_Instance.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_IPL_L100.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_Luri.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_PD_FN1500W_13CH.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLanguage.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAdmin.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTowerLamp.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSaveAsModel.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgErrorSolution.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\INI.cpp">
+      <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSleepMode.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Fastech_PR_Motion.cpp">
+      <Filter>소스 파일\Motion\FasTech</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_ODA_PT.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket_Udp.cpp">
+      <Filter>소스 파일\Socket_UDP</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_YouthTech.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_ODA_Q.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_SOL_3.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLotoMode.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqPicker.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateUI.cpp">
+      <Filter>소스 파일\Sequence\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqBase.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqSemiAuto.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqPickerMgr.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="RichEditCtrlEx.cpp">
+      <Filter>소스 파일\RichEditCtrlEx</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgManualMove.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="IO.cpp">
+      <Filter>소스 파일\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion.cpp">
+      <Filter>소스 파일\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="IcsCommunicator.cpp">
+      <Filter>IcsComm</Filter>
+    </ClCompile>
+    <ClCompile Include="CL500ACommunicator.cpp">
+      <Filter>소스 파일\ChromaMeter\CL-500A</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseChromaMeter.cpp">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClCompile>
+    <ClCompile Include="CL200A.cpp">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClCompile>
+    <ClCompile Include="SerialPort.cpp">
+      <Filter>소스 파일\ChromaMeter\CL-200A</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqStartupCheck.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController_YouthTech_DPS.cpp">
+      <Filter>소스 파일\LightController</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAxisView.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSiMain.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSiView.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgHotPixelMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgGhostFlareMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgColorCalMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSFRNarrowMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSFRWideHMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSFRWideVMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgDistortionMain.cpp">
+      <Filter>소스 파일\Dialog_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSemcoComTest.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSocket.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgConfiguration.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCommConfiguration.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgDeviceConfiguration.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSystemConfiguration.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqConveyorReturn.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqConveyor1.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqConveyor2.cpp">
+      <Filter>소스 파일\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\LogSemco.cpp">
+      <Filter>소스 파일\Log</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LuriMotion_Base.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\LuriMotion_Base.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Luritech.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\NarrowMainIMG.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\MainFlow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\MainFlow.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Luritech.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Base.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\LuriMotion_Base.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\button_fewer.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\button_more.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_exit.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_ok.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_reset.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_save2.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_RLED_Red.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_RLED_Gray.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_RLED_Grn.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_LedOn.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_LedOff.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\InitialDlgBk.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\SOCKET_TOP VIEW.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\Siback.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\TeachDlgBk.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\CONVEYOR.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\CONVEYOR.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\Main_Layout.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\do-messenger_screenshot_2022-03-29_11_20_17.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\bitmap1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\screenshot_2022-03-29_11_20_17.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\screenshot_2022-03-29_11_20_17.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\image\LOTO.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
