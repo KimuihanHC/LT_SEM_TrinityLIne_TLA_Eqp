@@ -37,7 +37,6 @@ struct ReceivingCommand
 	static constexpr uint16 TimeSync = 0x0100;
 	static constexpr uint16 UserLevel = 0x0101;
 	static constexpr uint16 Language = 0x0102;
-	static constexpr uint16 Model = 0x0104;
 	//
 	//////////////////////////////////////////////////////////////////////////////////
 
@@ -54,7 +53,6 @@ struct ReceivingCommand
 
 	//////////////////////////////////////////////////////////////////////////////////
 	// Operation
-	static constexpr uint16 OperationActiveStatus = 0x0301;
 	static constexpr uint16 SocketAccepting = 0x0311;
 	static constexpr uint16 EjectAccepting = 0x0312;
 	static constexpr uint16 ProductionStartEnd = 0x0313;
@@ -71,7 +69,6 @@ CIcsClient::CIcsClient()
 	m_pTimeSyncEventNotifier = new TimeSyncEventNotifierImpl();
 	m_pUserLevelEventNotifier = new UserLevelEventNotifierImpl();
 	m_pLanguageEventNotifier = new LanguageEventNotifierImpl();
-	m_pModelEventNotifier = new ModelEventNotifierImpl();
 
 	AddRequestProcedure(ReceivingCommand::TimeSync,
 						reinterpret_cast<RequestProc>(
@@ -82,9 +79,6 @@ CIcsClient::CIcsClient()
 	AddRequestProcedure(ReceivingCommand::Language,
 						reinterpret_cast<RequestProc>(
 							&CIcsClient::ProcRequestLanguage));
-	AddRequestProcedure(ReceivingCommand::Model,
-						reinterpret_cast<RequestProc>(
-							&CIcsClient::ProcRequestModel));
 	//
 	//////////////////////////////////////////////////////////////////////////////////
 
@@ -120,15 +114,10 @@ CIcsClient::CIcsClient()
 
 	//////////////////////////////////////////////////////////////////////////////////
 	// Operation
-	m_pOperationActiveStatusEventNotifier = new OperationActiveStatusEventNotifierImpl();
 	m_pSocketAcceptingEventNotifier = new SocketAcceptingEventNotifierImpl();
 	m_pEjectAcceptingEventNotifier = new EjectAcceptingEventNotifierImpl();
 	m_pProductionStartEndEventNotifier = new ProductionStartEndEventNotifierImpl();
 	m_pForceEjectEventNotifier = new ForceEjectEventNotifierImpl();
-
-	AddRequestProcedure(ReceivingCommand::OperationActiveStatus,
-						reinterpret_cast<RequestProc>(
-							&CIcsClient::ProcRequestOperationActiveStatus));
 
 	AddRequestProcedure(ReceivingCommand::SocketAccepting,
 						reinterpret_cast<RequestProc>(
@@ -169,7 +158,6 @@ CIcsClient::~CIcsClient()
 
 	//////////////////////////////////////////////////////////////////////////////////
 	// Operation
-	delete m_pOperationActiveStatusEventNotifier;
 	delete m_pSocketAcceptingEventNotifier;
 	delete m_pEjectAcceptingEventNotifier;
 	delete m_pProductionStartEndEventNotifier;
@@ -372,13 +360,12 @@ bool CIcsClient::ProcRequestTimeSync(const DataCntr & dataCntr,
 bool CIcsClient::ProcRequestUserLevel(const DataCntr & dataCntr,
 									  DataCntr & /*resultDataCntr*/)
 {
-	if (dataCntr.size() < 2)
+	if(dataCntr.empty())
 		return false;
 
 	return RaiseUserLevelEvent(
 		{
-			static_cast<uint32>(strtoul(dataCntr[0].c_str(), nullptr, 10)),
-			ToTypeChar(dataCntr[1]).c_str()
+			static_cast<uint32>(strtoul(dataCntr[0].c_str(), nullptr, 10))
 		}
 	);
 }
@@ -392,20 +379,6 @@ bool CIcsClient::ProcRequestLanguage(const DataCntr & dataCntr,
 	return RaiseLanguageEvent(
 		{
 			static_cast<uint32>(strtoul(dataCntr[0].c_str(), nullptr, 10))
-		}
-	);
-}
-
-bool CIcsClient::ProcRequestModel(const DataCntr & dataCntr,
-								  DataCntr & /*resultDataCntr*/)
-{
-	if(dataCntr.size() < 2)
-		return false;
-
-	return RaiseModelEvent(
-		{
-			static_cast<uint16>(strtoul(dataCntr[0].c_str(), nullptr, 10)),
-			static_cast<uint16>(strtoul(dataCntr[1].c_str(), nullptr, 10))
 		}
 	);
 }
@@ -449,19 +422,6 @@ bool CIcsClient::ProcRequestUiVisible(const DataCntr & dataCntr,
 	return RaiseUiVisibleEvent(
 		{
 			static_cast<int>(strtol(dataCntr[0].c_str(), nullptr, 10)),
-		}
-	);
-}
-
-bool CIcsClient::ProcRequestOperationActiveStatus(const DataCntr & dataCntr,
-												  DataCntr & /*resultDataCntr*/)
-{
-	if (dataCntr.empty())
-		return false;
-
-	return RaiseOperationActiveStatusEvent(
-		{
-			static_cast<uint32>(strtoul(dataCntr[0].c_str(), nullptr, 10))
 		}
 	);
 }
@@ -541,13 +501,6 @@ bool CIcsClient::RaiseLanguageEvent(LanguageArgs::Args & args)
 					  args);
 }
 
-bool CIcsClient::RaiseModelEvent(ModelArgs::Args & args)
-{
-	return RaiseEvent(*this,
-					  *m_pModelEventNotifier,
-					  args);
-}
-
 bool CIcsClient::RaiseInitializationEvent()
 {
 	return RaiseEvent(*this,
@@ -582,13 +535,6 @@ bool CIcsClient::RaiseUiVisibleEvent(UiVisibleArgs::Args & args)
 {
 	return RaiseEvent(*this,
 					  *m_pUiVisibleEventNotifier,
-					  args);
-}
-
-bool CIcsClient::RaiseOperationActiveStatusEvent(OperationActiveStatusArgs::Args & args)
-{
-	return RaiseEvent(*this,
-					  *m_pOperationActiveStatusEventNotifier,
 					  args);
 }
 
@@ -638,12 +584,6 @@ CIcsClient::GetLanguageEventNotifier()
 	return *m_pLanguageEventNotifier;
 }
 
-ModelEventNotifier<CIcsClient> &
-CIcsClient::GetModelEventNotifier()
-{
-	return *m_pModelEventNotifier;
-}
-
 InitializationEventNotifier<CIcsClient> &
 CIcsClient::GetInitializationEventNotifier()
 {
@@ -678,12 +618,6 @@ UiVisibleEventNotifier<CIcsClient> &
 CIcsClient::GetUiVisibleEventNotifier()
 {
 	return *m_pUiVisibleEventNotifier;
-}
-
-OperationActiveStatusEventNotifier<CIcsClient> &
-CIcsClient::GetOperationActiveStatusEventNotifier()
-{
-	return *m_pOperationActiveStatusEventNotifier;
 }
 
 SocketAcceptingEventNotifier<CIcsClient> &

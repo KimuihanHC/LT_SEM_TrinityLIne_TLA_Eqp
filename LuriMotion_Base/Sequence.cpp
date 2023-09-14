@@ -193,7 +193,7 @@ void CSequence::Start_Run()
 
 	
 	LogSeq(_T("SEQUENCE Stsart."));
-	WRITE_SEMCO_LOG(_T("O,-,-,Run,TLA:Main,Start,"));
+	WRITE_SEMCO_LOG(_T("0,,,Run,,,"));
 }
 
 void CSequence::Stop_Run()
@@ -208,7 +208,7 @@ void CSequence::Stop_Run()
 		m_SeqPickerMgr.Stop();
 
 		LogSeq(_T("SEQUENCE Normal Stop."));
-		WRITE_SEMCO_LOG(_T("O,-,-,Stop,TLA:Main,Start,"));
+		WRITE_SEMCO_LOG(_T("0,,,Stop,,,"));
 // 	}
 // 	else
 // 	{
@@ -250,7 +250,7 @@ void CSequence::Emergency_Run()
 {
 	SetRunMode(eEStop);
 	LogSeq(_T("SEQUENCE Emergency Stop."));
-	WRITE_SEMCO_LOG(_T("O,-,-,Stop,TLA:Main,Start,"));
+	WRITE_SEMCO_LOG(_T("0,,,Stop,,,"));
 }
 void CSequence::Init_Compleate()
 {
@@ -1866,7 +1866,7 @@ TEST_END:
 		ICS_SendEquipmentStatus(EquipmentStatus::Alarm, (int)err, sz);
 
 		CString seqStr;
-		seqStr.Format(_T("O,-,-,Error,TLA:%s,%s,Error_Code=%d"), "", sz, (int)err);
+		seqStr.Format(_T("0,,,Error,%s,%s,Error_Code=%d"), "", sz, (int)err);
 		WRITE_SEMCO_LOG(seqStr);
 
 		SHOW_ERROR(err, sz);

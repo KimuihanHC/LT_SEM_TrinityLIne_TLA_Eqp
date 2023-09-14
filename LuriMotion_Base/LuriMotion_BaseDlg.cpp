@@ -8,6 +8,10 @@
 #include "LuriMotion_BaseDlg.h"
 #include "afxdialogex.h"
 
+#if (20230905)
+#include "Common_TCP.h"
+#endif
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -543,7 +547,6 @@ void CLuriMotion_BaseDlg::OnClose()
 	m_ctrlLight_SOL_3_9.ClosePort();
 
 	PostQuitMessage(WM_QUIT);
-	GetLogSemco().Exit();
 
 	HANDLE hHandle = AfxGetMainWnd()->m_hWnd;
 	DWORD dwID;
@@ -869,6 +872,36 @@ void CLuriMotion_BaseDlg::InitDevice()
 			WRITE_MAIN_LOG(_T("POWER ON FAILED\n"));
 	}
 		
+#if (20230905)
+	CString strTemp = _T("192.168.0.2");
+	DWORD dwTesterIP;
+	int nTesterPort = 4545;
+	dwTesterIP = (DWORD)_ttof(strTemp);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].Connect_Common(strTemp, nTesterPort);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].SetOwnerHWND(this->m_hWnd);
+	COMMON->DoEvent(100);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].InitVariable(IP_COMMON_SCREW_LEFT);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_Communication_Start);
+	COMMON->DoEvent(100);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_DataMessageSubscribe, 15);
+	COMMON->DoEvent(100);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_DataMessageSubscribe, 1201);
+
+
+	strTemp = _T("192.168.1.2");
+	//DWORD dwTesterIP;
+	//nTesterPort = 4545;
+	dwTesterIP = (DWORD)_ttof(strTemp);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].Connect_Common(strTemp, nTesterPort);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].SetOwnerHWND(this->m_hWnd);
+	COMMON->DoEvent(100);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].InitVariable(IP_COMMON_SCREW_RIGHT);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].Send_Common_Communication(eScrew_Communication_Start);
+	COMMON->DoEvent(100);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].Send_Common_Communication(eScrew_DataMessageSubscribe, 15);
+	COMMON->DoEvent(100);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].Send_Common_Communication(eScrew_DataMessageSubscribe, 1201);
+#endif
 	Connectz();
 }
 

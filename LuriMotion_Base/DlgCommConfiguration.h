@@ -2,6 +2,9 @@
 
 #include "VGbase/VGStatic.h"
 
+#if (20230905)
+#include "Common_TCP.h"
+#endif
 // CDlgCommConfiguration 대화 상자
 
 class CDlgCommConfiguration : public CDialogEx
@@ -93,5 +96,34 @@ private:
 
 	CIPAddressCtrl	m_lanIpCtrl[4];
 
+#if (20230905)
+public:
+	void			ChangeCommonUI_Language();
+private:
+	void			ChangeCommonUi_Lan();
+private:
+	CVGStatic		m_stComponent_Lan_Common_Sub[IP_COMMON_MAX];
+	CVGStatic		m_stComponent_Lan_Common_Ip[IP_COMMON_MAX];				// Ip static
+	CMFCButton		m_btnComponent_Lan_Common_Connect[IP_COMMON_MAX];			// Lan 통신 연결
+	CMFCButton		m_btnComponent_Lan_Common_DisConnect[IP_COMMON_MAX];		// Lan 통신 g해제
+	CIPAddressCtrl	m_lanIpCommonCtrl[IP_COMMON_MAX];
+	CEdit			m_edComponent_Lan_Common_Port[IP_COMMON_MAX];
+private:
+	afx_msg void OnBnClickedBtnLanConnectCommon1();
+	afx_msg void OnBnClickedBtnDisconnectCommon1();
+	afx_msg void OnBnClickedBtnLanSubCommonPset1();
+	afx_msg void OnBnClickedBtnLanSubCommonTeghteringResult1();
+
+	afx_msg void OnBnClickedBtnLanConnectCommon2();
+	afx_msg void OnBnClickedBtnLanDisconnectCommon2();
+	afx_msg void OnBnClickedBtnLanSubCommonPSet2();
+#endif
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedBtnSerialConnectBarcode1();
+	
+
+
+
+	afx_msg void OnBnClickedBtnLanSubCommonTighterningResult2();
 };

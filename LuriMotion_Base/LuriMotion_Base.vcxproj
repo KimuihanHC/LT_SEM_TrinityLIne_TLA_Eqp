@@ -878,6 +878,7 @@ xcopy ..\Lib_ICS\lib\$(PlatformTarget)\bin\ltics_comm.dll ..\_Binary_$(PlatformT
     <ClInclude Include="Ajin_IO.h" />
     <ClInclude Include="BaseChromaMeter.h" />
     <ClInclude Include="Buffer.h" />
+    <ClInclude Include="Common_TCP.h" />
     <ClInclude Include="DlgCommConfiguration.h" />
     <ClInclude Include="CL200A.h" />
     <ClInclude Include="CL500ACommunicator.h" />
@@ -982,6 +983,7 @@ xcopy ..\Lib_ICS\lib\$(PlatformTarget)\bin\ltics_comm.dll ..\_Binary_$(PlatformT
     <ClCompile Include="AjinBoard.cpp" />
     <ClCompile Include="Ajin_IO.cpp" />
     <ClCompile Include="BaseChromaMeter.cpp" />
+    <ClCompile Include="Common_TCP.cpp" />
     <ClCompile Include="DlgCommConfiguration.cpp" />
     <ClCompile Include="DlgDeviceConfiguration.cpp" />
     <ClCompile Include="DlgSystemConfiguration.cpp" />

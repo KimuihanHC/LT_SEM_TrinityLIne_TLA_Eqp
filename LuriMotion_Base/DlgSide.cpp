@@ -500,8 +500,6 @@ void CDlgSide::OnBnClickedBtnSideCommand1()
 					strTemp.Format(_T("START BUTTON[UI] PRESSED"));
 
 				WRITE_MAIN_LOG(strTemp);
-				WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Main_Button_Click,Start,"));
-
 				SEQUENCE->StrNG.Empty();
 				SEQUENCE->nPASS_NG = 3;
 			}
@@ -559,8 +557,6 @@ void CDlgSide::OnBnClickedBtnSideCommand1()
 					strTemp.Format(_T("START BUTTON[UI] PRESSED"));
 
 				WRITE_MAIN_LOG(strTemp);
-				WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Main_Button_Click,Start,"));
-
 				SEQUENCE->StrNG.Empty();
 				SEQUENCE->nPASS_NG = 3;
 			}
@@ -621,7 +617,6 @@ void CDlgSide::OnBnClickedBtnSideCommand2()
 			else
 				strTemp.Format(_T("STOP BUTTON[UI] PRESSED."));
 			COMMON->Write_Main_Log(strTemp);
-			WRITE_SEMCO_LOG(_T("M,-,-,Stop,EVENT:Manual_Mode,Start,"));
 		}
 	}
 	else
@@ -650,8 +645,6 @@ void CDlgSide::OnBnClickedBtnSideCommand2()
 		else
 			strTemp.Format(_T("STOP BUTTON[UI] PRESSED."));
 		COMMON->Write_Main_Log(strTemp);
-		WRITE_SEMCO_LOG(_T("M,-,-,Stop,EVENT:Manual_Mode,Start,"));
-
 		UINT nRetCode = 0;
 		if (m_UdpTester[0].m_bConnected)
 		{
@@ -721,7 +714,6 @@ void CDlgSide::OnBnClickedBtnSideCommand3()
 	SetOperationMode(OperationMode::SemiAuto);
 	SetMenuClickColor(enMenu::Menu_SemiAuto);
 	EqpTypeShowOperation();
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Semi_Auto_Mode,Start,"));
 }
 
 //====================================================================================
@@ -737,7 +729,6 @@ void CDlgSide::OnBnClickedBtnSideCommand4()
 	SetMenuClickColor(Menu_StartupCheck);
 	SetOperationMode(OperationMode::StartUpCheck);
 	EqpTypeShowOperation();
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Startup_Check_Mode,Start,"));
 }
 
 //====================================================================================
@@ -781,7 +772,6 @@ void CDlgSide::OnBnClickedBtnSideCommand5()
 	else
 		strTemp.Format(_T("LOTO MODE BUTTON[UI] PRESSED."));
 	COMMON->Write_Main_Log(strTemp);
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Loto_Mode_Mode,Start,"));
 
 	SetOperationMode(OperationMode::Loto);
 	
@@ -867,7 +857,6 @@ void CDlgSide::OnBnClickedBtnSideCommand6()
 			strTemp.Format(_T("DRY RUN BUTTON[UI] PRESSED."));
 
 		WRITE_MAIN_LOG(strTemp);
-		WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Dry_Run_Mode,Start,"));
 	}
 
 	
@@ -914,6 +903,10 @@ void CDlgSide::OnBnClickedBtnSideCommand8()
 	pParrentDlg->m_pDlgTitle->EnableWindow(TRUE);
 	pParrentDlg->m_pDlgTeach->EnableWindow(TRUE);
 	pParrentDlg->m_pDlgIO->EnableWindow(TRUE);
+
+
+
+
 }
 
 void CDlgSide::OnTimer(UINT_PTR nIDEvent)

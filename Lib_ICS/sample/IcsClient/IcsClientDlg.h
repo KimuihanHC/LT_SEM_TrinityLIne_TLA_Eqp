@@ -117,8 +117,6 @@ private:
 		lt::UserLevelEventArgs<lt::CIcsClient>;
 	using LanguageEventArgs =
 		lt::LanguageEventArgs<lt::CIcsClient>;
-	using ModelEventArgs =
-		lt::ModelEventArgs<lt::CIcsClient>;
 	using InitializationEventArgs =
 		lt::InitializationEventArgs<lt::CIcsClient>;
 	using ResetEventArgs =
@@ -131,10 +129,6 @@ private:
 		lt::BuzzerOffEventArgs<lt::CIcsClient>;
 	using UiVisibleEventArgs =
 		lt::UiVisibleEventArgs<lt::CIcsClient>;
-
-	using OperationActiveStatusEventArgs =
-		lt::OperationActiveStatusEventArgs<lt::CIcsClient>;
-
 	using SocketAcceptingEventArgs =
 		lt::SocketAcceptingEventArgs<lt::CIcsClient>;
 	using EjectAcceptingEventArgs =
@@ -147,16 +141,12 @@ private:
 	void OnTimeSyncEvent(TimeSyncEventArgs & eventArgs);
 	void OnUserLevelEvent(UserLevelEventArgs & eventArgs);
 	void OnLanguageEvent(LanguageEventArgs & eventArgs);
-	void OnModelEvent(ModelEventArgs & eventArgs);
 	void OnInitializationEvent(InitializationEventArgs & eventArgs);
 	void OnResetEvent(ResetEventArgs & eventArgs);
 	void OnRunEvent(RunEventArgs & eventArgs);
 	void OnStopEvent(StopEventArgs & eventArgs);
 	void OnBuzzerOffEvent(BuzzerOffEventArgs & eventArgs);
 	void OnUiVisibleEvent(UiVisibleEventArgs & eventArgs);
-
-	void OnOperationActiveStatusEvent(OperationActiveStatusEventArgs & eventArgs);
-
 	void OnSocketAcceptingEvent(SocketAcceptingEventArgs & eventArgs);
 	void OnEjectAcceptingEvent(EjectAcceptingEventArgs & eventArgs);
 	void OnProductionStartEndEvent(ProductionStartEndEventArgs & eventArgs);
@@ -169,6 +159,11 @@ private:
 
 	// Tester
 	void SendTestResult();
+
+	using ModelEventArgs =
+		lt::ModelEventArgs<lt::CIcsClientTester>;
+
+	void OnModelEvent(ModelEventArgs & eventArgs);
 
 private:
 	CRichEditCtrlEx * m_pRichEditCtrl = nullptr;
@@ -202,8 +197,6 @@ private:
 		lt::CEventMfnListener<CIcsClientDlg, UserLevelEventArgs>;
 	using LanguageEventListener =
 		lt::CEventMfnListener<CIcsClientDlg, LanguageEventArgs>;
-	using ModelEventListener =
-		lt::CEventMfnListener<CIcsClientDlg, ModelEventArgs>;
 	using InitializationEventListener =
 		lt::CEventMfnListener<CIcsClientDlg, InitializationEventArgs>;
 	using ResetEventListener =
@@ -216,10 +209,6 @@ private:
 		lt::CEventMfnListener<CIcsClientDlg, BuzzerOffEventArgs>;
 	using UiVisibleEventListener =
 		lt::CEventMfnListener<CIcsClientDlg, UiVisibleEventArgs>;
-
-	using OperationActiveStatusEventListener =
-		lt::CEventMfnListener<CIcsClientDlg, OperationActiveStatusEventArgs>;
-
 	using SocketAcceptingEventListener =
 		lt::CEventMfnListener<CIcsClientDlg, SocketAcceptingEventArgs>;
 	using EjectAcceptingEventListener =
@@ -232,18 +221,20 @@ private:
 	TimeSyncEventListener * m_pTimeSyncEventListener = nullptr;
 	UserLevelEventListener * m_pUserLevelEventListener = nullptr;
 	LanguageEventListener * m_pLanguageEventListener = nullptr;
-	ModelEventListener * m_pModelEventListener = nullptr;
 	InitializationEventListener * m_pInitializationEventListener = nullptr;
 	ResetEventListener * m_pResetEventListener = nullptr;
 	RunEventListener * m_pRunEventListener = nullptr;
 	StopEventListener * m_pStopEventListener = nullptr;
 	BuzzerOffEventListener * m_pBuzzerOffEventListener = nullptr;
 	UiVisibleEventListener * m_pUiVisibleEventListener = nullptr;
-	
-	OperationActiveStatusEventListener * m_pOperationActiveStatusEventListener = nullptr;
-
 	SocketAcceptingEventListener * m_pSocketAcceptingEventListener = nullptr;
 	EjectAcceptingEventListener * m_pEjectAcceptingEventListener = nullptr;
 	ProductionStartEndEventListener * m_pProductionStartEndEventListener = nullptr;
 	ForceEjectEventListener * m_pForceEjectEventListener = nullptr;
+
+	// Tester
+	using ModelEventListener =
+		lt::CEventMfnListener<CIcsClientDlg, ModelEventArgs>;
+
+	ModelEventListener * m_pModelEventListener = nullptr;
 };

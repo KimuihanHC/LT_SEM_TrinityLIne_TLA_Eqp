@@ -91,8 +91,6 @@ BOOL CLuriMotion_BaseApp::InitInstance()
 	m_SemcoLog.SetExpirePeriod(365);
 	m_SemcoLog.Start();
 
-	m_SemcoLog.Init();
-
 	// 표준 초기화
 	// 이들 기능을 사용하지 않고 최종 실행 파일의 크기를 줄이려면
 	// 아래에서 필요 없는 특정 초기화

@@ -579,7 +579,7 @@ void CDataManager::WriteChangesMotionParamToSemcoLog(MOTION_PARAM stOldMotion, M
 		{
 			if (stOldMotion.nMotorSpeed[i][j] != stNewMotion.nMotorSpeed[i][j])
 			{
-				csvStr.Format(_T("P,-,-,MOTION_SPEED_%02d_%02d,%d,%d,%s"), i, j, stOldMotion.nMotorSpeed[i][j], stNewMotion.nMotorSpeed[i][j], COMMON->GetPermissionId());
+				csvStr.Format(_T("P,,,MOTION_SPEED_%02d_%02d,%d,%d,%s"), i, j, stOldMotion.nMotorSpeed[i][j], stNewMotion.nMotorSpeed[i][j], COMMON->GetPermissionId());
 				WRITE_SEMCO_LOG(csvStr);
 			}
 		}
@@ -868,115 +868,115 @@ void CDataManager::WriteChangesTeachingDataToSemcoLog(TEACHING_PARAM stOldTeachi
 	CString csvStr;
 	if (stOldTeaching.dAdjust_Offset_Y != stNewTeaching.dAdjust_Offset_Y)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_Offset_Y,%0.3f,%0.3f,%s"), stOldTeaching.dAdjust_Offset_Y, stNewTeaching.dAdjust_Offset_Y, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_Offset_Y,%0.3f,%0.3f,%s"), stOldTeaching.dAdjust_Offset_Y, stNewTeaching.dAdjust_Offset_Y, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nAdjust_RetryCnt != stNewTeaching.nAdjust_RetryCnt)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_RetryCnt,%d,%d,%s"), stOldTeaching.nAdjust_RetryCnt, stNewTeaching.nAdjust_RetryCnt, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_RetryCnt,%d,%d,%s"), stOldTeaching.nAdjust_RetryCnt, stNewTeaching.nAdjust_RetryCnt, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nAdjust_Reverse != stNewTeaching.nAdjust_Reverse)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_Reverse,%d,%d,%s"), stOldTeaching.nAdjust_Reverse, stNewTeaching.nAdjust_Reverse, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_Reverse,%d,%d,%s"), stOldTeaching.nAdjust_Reverse, stNewTeaching.nAdjust_Reverse, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nAdjust_Screw1_Spec != stNewTeaching.nAdjust_Screw1_Spec)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_Screw1_Spec,%d,%d,%s"), stOldTeaching.nAdjust_Screw1_Spec, stNewTeaching.nAdjust_Screw1_Spec, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_Screw1_Spec,%d,%d,%s"), stOldTeaching.nAdjust_Screw1_Spec, stNewTeaching.nAdjust_Screw1_Spec, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nAdjust_Screw2_Spec != stNewTeaching.nAdjust_Screw2_Spec)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_Screw2_Spec,%d,%d,%s"), stOldTeaching.nAdjust_Screw2_Spec, stNewTeaching.nAdjust_Screw2_Spec, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_Screw2_Spec,%d,%d,%s"), stOldTeaching.nAdjust_Screw2_Spec, stNewTeaching.nAdjust_Screw2_Spec, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nAdjust_Spec != stNewTeaching.nAdjust_Spec)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_Spec,%d,%d,%s"), stOldTeaching.nAdjust_Spec, stNewTeaching.nAdjust_Spec, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_Spec,%d,%d,%s"), stOldTeaching.nAdjust_Spec, stNewTeaching.nAdjust_Spec, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nAdjust_Wait != stNewTeaching.nAdjust_Wait)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_Wait,%0.3f,%0.3f,%s"), stOldTeaching.nAdjust_Wait, stNewTeaching.nAdjust_Wait, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_Wait,%0.3f,%0.3f,%s"), stOldTeaching.nAdjust_Wait, stNewTeaching.nAdjust_Wait, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nAdjust_Work != stNewTeaching.nAdjust_Work)
 	{
-		csvStr.Format(_T("P,-,-,Adjust_Work,%d,%d,%s"), stOldTeaching.nAdjust_Work, stNewTeaching.nAdjust_Work, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Adjust_Work,%d,%d,%s"), stOldTeaching.nAdjust_Work, stNewTeaching.nAdjust_Work, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nBarcode != stNewTeaching.nBarcode)
 	{
-		csvStr.Format(_T("P,-,-,Barcode,%d,%d,%s"), stOldTeaching.nBarcode, stNewTeaching.nBarcode, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Barcode,%d,%d,%s"), stOldTeaching.nBarcode, stNewTeaching.nBarcode, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nScrew_L_Commencement != stNewTeaching.nScrew_L_Commencement)
 	{
-		csvStr.Format(_T("P,-,-,Screw_L_Commencement,%d,%d,%s"), stOldTeaching.nScrew_L_Commencement, stNewTeaching.nScrew_L_Commencement, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Screw_L_Commencement,%d,%d,%s"), stOldTeaching.nScrew_L_Commencement, stNewTeaching.nScrew_L_Commencement, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nScrew_L_Wait != stNewTeaching.nScrew_L_Wait)
 	{
-		csvStr.Format(_T("P,-,-,Screw_L_Wait,%d,%d,%s"), stOldTeaching.nScrew_L_Wait, stNewTeaching.nScrew_L_Wait, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Screw_L_Wait,%d,%d,%s"), stOldTeaching.nScrew_L_Wait, stNewTeaching.nScrew_L_Wait, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nScrew_L_Work != stNewTeaching.nScrew_L_Work)
 	{
-		csvStr.Format(_T("P,-,-,Screw_L_Work,%d,%d,%s"), stOldTeaching.nScrew_L_Work, stNewTeaching.nScrew_L_Work, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Screw_L_Work,%d,%d,%s"), stOldTeaching.nScrew_L_Work, stNewTeaching.nScrew_L_Work, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nScrew_R_Commencement != stNewTeaching.nScrew_R_Commencement)
 	{
-		csvStr.Format(_T("P,-,-,Screw_R_Commencement,%d,%d,%s"), stOldTeaching.nScrew_R_Commencement, stNewTeaching.nScrew_R_Commencement, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Screw_R_Commencement,%d,%d,%s"), stOldTeaching.nScrew_R_Commencement, stNewTeaching.nScrew_R_Commencement, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nVignetting_R_Test_01 != stNewTeaching.nVignetting_R_Test_01)
 	{
-		csvStr.Format(_T("P,-,-,Vignetting_R_Test_01,%d,%d,%s"), stOldTeaching.nVignetting_R_Test_01, stNewTeaching.nVignetting_R_Test_01, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Vignetting_R_Test_01,%d,%d,%s"), stOldTeaching.nVignetting_R_Test_01, stNewTeaching.nVignetting_R_Test_01, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nVignetting_R_Test_02 != stNewTeaching.nVignetting_R_Test_02)
 	{
-		csvStr.Format(_T("P,-,-,Vignetting_R_Test_02,%d,%d,%s"), stOldTeaching.nVignetting_R_Test_02, stNewTeaching.nVignetting_R_Test_02, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Vignetting_R_Test_02,%d,%d,%s"), stOldTeaching.nVignetting_R_Test_02, stNewTeaching.nVignetting_R_Test_02, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nVignetting_R_Wait != stNewTeaching.nVignetting_R_Wait)
 	{
-		csvStr.Format(_T("P,-,-,Vignetting_R_Wait,%d,%d,%s"), stOldTeaching.nVignetting_R_Wait, stNewTeaching.nVignetting_R_Wait, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Vignetting_R_Wait,%d,%d,%s"), stOldTeaching.nVignetting_R_Wait, stNewTeaching.nVignetting_R_Wait, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nVignetting_X_Test_01 != stNewTeaching.nVignetting_X_Test_01)
 	{
-		csvStr.Format(_T("P,-,-,Vignetting_X_Test_01,%d,%d,%s"), stOldTeaching.nVignetting_X_Test_01, stNewTeaching.nVignetting_X_Test_01, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Vignetting_X_Test_01,%d,%d,%s"), stOldTeaching.nVignetting_X_Test_01, stNewTeaching.nVignetting_X_Test_01, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nVignetting_X_Test_02 != stNewTeaching.nVignetting_X_Test_02)
 	{
-		csvStr.Format(_T("P,-,-,Vignetting_X_Test_02,%d,%d,%s"), stOldTeaching.nVignetting_X_Test_02, stNewTeaching.nVignetting_X_Test_02, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Vignetting_X_Test_02,%d,%d,%s"), stOldTeaching.nVignetting_X_Test_02, stNewTeaching.nVignetting_X_Test_02, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 
 	if (stOldTeaching.nVignetting_X_Wait != stNewTeaching.nVignetting_X_Wait)
 	{
-		csvStr.Format(_T("P,-,-,Vignetting_X_Wait,%d,%d,%s"), stOldTeaching.nVignetting_X_Wait, stNewTeaching.nVignetting_X_Wait, COMMON->GetPermissionId());
+		csvStr.Format(_T("P,,,Vignetting_X_Wait,%d,%d,%s"), stOldTeaching.nVignetting_X_Wait, stNewTeaching.nVignetting_X_Wait, COMMON->GetPermissionId());
 		WRITE_SEMCO_LOG(csvStr);
 	}
 }

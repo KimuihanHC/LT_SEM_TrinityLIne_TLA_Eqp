@@ -53,6 +53,10 @@
 #include "SYSocket.h"
 #include "Socket_Udp.h"
 
+#if (20230905)
+//#include "Common_TCP.h"
+#endif
+
 #include <Gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 using namespace Gdiplus;

@@ -9,7 +9,6 @@
 #include "PComm.h"
 #include "DlgLog.h"
 
-
 // CDlgCommConfiguration 대화 상자
 
 IMPLEMENT_DYNAMIC(CDlgCommConfiguration, CDialogEx)
@@ -22,6 +21,7 @@ CDlgCommConfiguration::CDlgCommConfiguration(CWnd* pParent /*=nullptr*/)
 
 CDlgCommConfiguration::~CDlgCommConfiguration()
 {
+
 }
 
 void CDlgCommConfiguration::SaveConfiguration()
@@ -217,6 +217,22 @@ void CDlgCommConfiguration::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_COMBO_SERIAL_34, m_cbSerial_ParityBit[6]);
 	DDX_Control(pDX, IDC_COMBO_SERIAL_35, m_cbSerial_StopBit[6]);
 
+#if (20230905)
+	DDX_Control(pDX, IDC_STC_LAN_CONNECT_COMMON1, m_stComponent_Lan_Common_Sub[IP_COMMON_SCREW_LEFT]);
+	DDX_Control(pDX, IDC_STC_CONNECT_LAN_IP_COMMON1, m_stComponent_Lan_Common_Ip[IP_COMMON_SCREW_LEFT]);
+	DDX_Control(pDX, IDC_BTN_LAN_CONNECT_COMMON1, m_btnComponent_Lan_Common_Connect[IP_COMMON_SCREW_LEFT]);
+	DDX_Control(pDX, IDC_BTN_LAN_DISCONNECT_COMMON1, m_btnComponent_Lan_Common_DisConnect[IP_COMMON_SCREW_LEFT]);
+	DDX_Control(pDX, IDC_IPADDRESS_LAN_COMMON1, m_lanIpCommonCtrl[IP_COMMON_SCREW_LEFT]);
+	DDX_Control(pDX, IDC_EDIT_LAN_PORT_INPUT_COMMON1, m_edComponent_Lan_Common_Port[IP_COMMON_SCREW_LEFT]);
+
+
+	DDX_Control(pDX, IDC_STC_LAN_CONNECT_COMMON2, m_stComponent_Lan_Common_Sub[IP_COMMON_SCREW_RIGHT]);
+	DDX_Control(pDX, IDC_STC_CONNECT_LAN_IP_COMMON2, m_stComponent_Lan_Common_Ip[IP_COMMON_SCREW_RIGHT]);
+	DDX_Control(pDX, IDC_BTN_LAN_CONNECT_COMMON2, m_btnComponent_Lan_Common_Connect[IP_COMMON_SCREW_RIGHT]);
+	DDX_Control(pDX, IDC_BTN_LAN_DISCONNECT_COMMON2, m_btnComponent_Lan_Common_DisConnect[IP_COMMON_SCREW_RIGHT]);
+	DDX_Control(pDX, IDC_IPADDRESS_LAN_COMMON2, m_lanIpCommonCtrl[IP_COMMON_SCREW_RIGHT]);
+	DDX_Control(pDX, IDC_EDIT_LAN_PORT_INPUT_COMMON2, m_edComponent_Lan_Common_Port[IP_COMMON_SCREW_RIGHT]);
+#endif
 // #if(SET_INSPECTOR == SYS_COLOR_CAL)
 // 	DDX_Control(pDX, IDC_ED_CL_500A_MEASUREMENT_DATA, m_edCL500AMeasurementData);
 // #elif(SET_INSPECTOR == SYS_HOTPIXEL)
@@ -362,7 +378,9 @@ void CDlgCommConfiguration::ChangeUI_Language()
 		m_btnComponent_Measure_CL_200A.SetWindowText(_T("Measure"));
 		m_btnComponent_Measure_CL_500A.SetWindowText(_T("Measure"));
 	}
-
+#if (20230905)
+	ChangeCommonUI_Language();
+#endif
 	UpdateData(FALSE);
 }
 
@@ -388,7 +406,9 @@ void CDlgCommConfiguration::ChangeUi_Lan()
 		strTemp.Format(_T("%d"), stTester.nTesterPort[i]);
 		m_edComponent_Lan_Port[i].SetWindowText(strTemp);
 	}
-
+#if (20230905)
+	ChangeCommonUi_Lan();
+#endif
 	UpdateData(FALSE);
 }
 
@@ -431,7 +451,16 @@ BEGIN_MESSAGE_MAP(CDlgCommConfiguration, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_SERIAL_DISCONNECT_LIGHT_CONTROLLER_2, &CDlgCommConfiguration::OnBnClickedBtnSerialDisconnectLightController2)
 	ON_BN_CLICKED(IDC_BTN_SERIAL_CONNECT_LIGHT_CONTROLLER_3, &CDlgCommConfiguration::OnBnClickedBtnSerialConnectLightController3)
 	ON_BN_CLICKED(IDC_BTN_SERIAL_DISCONNECT_LIGHT_CONTROLLER_3, &CDlgCommConfiguration::OnBnClickedBtnSerialDisconnectLightController3)
+#if (20230905)
+	ON_BN_CLICKED(IDC_BTN_LAN_CONNECT_COMMON1, &CDlgCommConfiguration::OnBnClickedBtnLanConnectCommon1)
+	ON_BN_CLICKED(IDC_BTN_LAN_DISCONNECT_COMMON1, &CDlgCommConfiguration::OnBnClickedBtnDisconnectCommon1)
+	ON_BN_CLICKED(IDC_BTN_LAN_SUB_COMMON_PSET1, &CDlgCommConfiguration::OnBnClickedBtnLanSubCommonPset1)
+	ON_BN_CLICKED(IDC_BTN_LAN_SUB_COMMON_TIGHTERNING_RESULT1, &CDlgCommConfiguration::OnBnClickedBtnLanSubCommonTeghteringResult1)
 
+	ON_BN_CLICKED(IDC_BTN_LAN_CONNECT_COMMON2, &CDlgCommConfiguration::OnBnClickedBtnLanConnectCommon2)
+	ON_BN_CLICKED(IDC_BTN_LAN_DISCONNECT_COMMON2, &CDlgCommConfiguration::OnBnClickedBtnLanDisconnectCommon2)
+	ON_BN_CLICKED(IDC_BTN_LAN_SUB_COMMON_PSET2, &CDlgCommConfiguration::OnBnClickedBtnLanSubCommonPSet2)
+#endif
 	// Etc
 // #if(SET_INSPECTOR == SYS_COLOR_CAL)
 // 	ON_BN_CLICKED(IDC_BTN_SERIAL_CONNECT_CL_500A, &CDlgCommConfiguration::OnBnClickedBtnCL500AConnect)
@@ -442,6 +471,11 @@ BEGIN_MESSAGE_MAP(CDlgCommConfiguration, CDialogEx)
 // 	ON_BN_CLICKED(IDC_BTN_SERIAL_CONNECT_CL_200A, &CDlgCommConfiguration::OnBnClickedBtnCL200AConnect)
 // 	ON_BN_CLICKED(IDC_BTN_SERIAL_DISCONNECT_CL_200A, &CDlgCommConfiguration::OnBnClickedBtnCL200ADisconnect)
 // #endif
+
+
+
+
+ON_BN_CLICKED(IDC_BTN_LAN_SUB_COMMON_TIGHTERNING_RESULT2, &CDlgCommConfiguration::OnBnClickedBtnLanSubCommonTighterningResult2)
 END_MESSAGE_MAP()
 
 void CDlgCommConfiguration::InitComponent_Component()
@@ -1063,3 +1097,182 @@ void CDlgCommConfiguration::OnBnClickedBtnSerialDisconnectLightController3()
 // 	m_edCL500AMeasurementData.SetWindowText(strData);
 // }
 // #endif
+
+
+#if (20230905)
+void CDlgCommConfiguration::ChangeCommonUI_Language()
+{
+	EQ_BASIC_PARAM	stBasic = *DATAMANAGER->GetCurrentEqBasicData();
+
+	CString strTemp = _T("");
+	CRect rt;
+
+	for (int i = 0; i < IP_COMMON_MAX; i++)
+	{
+		m_stComponent_Lan_Common_Sub[i].SetStaticStyle(CVGStatic::StaticStyle_Title_Sub);
+		m_stComponent_Lan_Common_Sub[i].SetColorStyle(CVGStatic::ColorStyle_Turquois);
+		m_stComponent_Lan_Common_Sub[i].SetFont_Gdip(L"Arial", 9.0F);
+
+		if (stBasic.nLanguage == 0)
+			m_stComponent_Lan_Common_Sub[i].SetText(m_szComponentLan_Common_Sub_Kor[i]);
+		else
+			m_stComponent_Lan_Common_Sub[i].SetText(m_szComponentLan_Common_Sub_Eng[i]);
+	}
+
+	for (int i = 0; i < IP_COMMON_MAX; i++)
+	{
+		m_stComponent_Lan_Common_Ip[i].SetStaticStyle(CVGStatic::StaticStyle_Title_Sub);
+		m_stComponent_Lan_Common_Ip[i].SetColorStyle(CVGStatic::ColorStyle_Black);
+		m_stComponent_Lan_Common_Ip[i].SetFont_Gdip(L"Arial", 9.0F);
+		m_stComponent_Lan_Common_Ip[i].SetText(_T("IP"));
+	}
+
+	for (int i = 0; i < IP_COMMON_MAX; i++)
+	{
+		if (stBasic.nLanguage == 0)
+			m_btnComponent_Lan_Common_Connect[i].SetWindowText(m_szComponentConnect_Kor[0]);
+		else
+			m_btnComponent_Lan_Common_Connect[i].SetWindowText(m_szComponentConnect_Eng[0]);
+
+		if (stBasic.nLanguage == 0)
+			m_btnComponent_Lan_Common_DisConnect[i].SetWindowText(m_szComponentConnect_Kor[1]);
+		else
+			m_btnComponent_Lan_Common_DisConnect[i].SetWindowText(m_szComponentConnect_Eng[1]);
+	}
+}
+
+void CDlgCommConfiguration::ChangeCommonUi_Lan()
+{
+	//TESTER_COMM	stTester = *DATAMANAGER->GetCurrentTesterCommData();
+	CString strTemp = _T("");
+	CString strPart = _T("");
+	BYTE byIp[4] = { 0x00, };
+	TCHAR tchSep = _T('.');
+
+	for (int i = 0; i < IP_COMMON_MAX; i++)
+	{
+		//strTemp.Format(_T("%s"), stTester.strTesterConnect[i]);
+		strTemp = _T("192.168.0.2");
+		for (int j = 0; j < 4; j++)
+		{
+			AfxExtractSubString(strPart, strTemp, j, tchSep);
+			byIp[j] = _ttoi(strPart);
+
+		}
+		m_lanIpCommonCtrl[i].SetAddress(byIp[0], byIp[1], byIp[2], byIp[3]);
+
+		//strTemp.Format(_T("%d"), stTester.nTesterPort[i]);
+		strTemp = _T("4545");
+		m_edComponent_Lan_Common_Port[i].SetWindowText(strTemp);
+	}
+
+}
+
+
+
+void CDlgCommConfiguration::OnBnClickedBtnLanConnectCommon1()
+{
+	UpdateData(TRUE);
+
+	CString strTemp = _T("");
+
+	TESTER_COMM stTester = *DATAMANAGER->GetCurrentTesterCommData();
+
+	if (m_TCPCommon[IP_COMMON_SCREW_LEFT].m_bConnected)
+	{
+		m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_Communication_Start);
+	}
+	else
+	{
+		strTemp = "192.168.0.2";
+		DWORD dwTesterIP;
+		int nTesterPort = 4545;
+		dwTesterIP = (DWORD)_ttof(strTemp);
+		CString strTesterConnect;
+		m_TCPCommon[IP_COMMON_SCREW_LEFT].Connect_Common(strTemp, nTesterPort);
+
+		COMMON->DoEvent(100);
+		m_TCPCommon[IP_COMMON_SCREW_LEFT].InitVariable(IP_COMMON_SCREW_LEFT);
+		m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_Communication_Start);
+
+		m_TCPCommon[IP_COMMON_SCREW_LEFT].SetOwnerHWND(this->m_hWnd);
+	}
+}
+
+void CDlgCommConfiguration::OnBnClickedBtnDisconnectCommon1()
+{
+	UpdateData(TRUE);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_Communication_Stop);
+	m_TCPCommon[IP_COMMON_SCREW_LEFT].CloseSocket();
+}
+#endif
+
+void CDlgCommConfiguration::OnBnClickedBtnLanSubCommonPset1()
+{
+	// TODO: Add your control notification handler code here
+	if (m_TCPCommon[IP_COMMON_SCREW_LEFT].m_bConnected)
+	  m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_DataMessageSubscribe, 15);
+}
+
+
+void CDlgCommConfiguration::OnBnClickedBtnLanSubCommonTeghteringResult1()
+{
+	// TODO: Add your control notification handler code here
+	if (m_TCPCommon[IP_COMMON_SCREW_LEFT].m_bConnected)
+		m_TCPCommon[IP_COMMON_SCREW_LEFT].Send_Common_Communication(eScrew_DataMessageSubscribe, 1201);
+}
+
+
+void CDlgCommConfiguration::OnBnClickedBtnLanConnectCommon2()
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+
+	CString strTemp = _T("");
+
+	TESTER_COMM stTester = *DATAMANAGER->GetCurrentTesterCommData();
+
+	if (m_TCPCommon[IP_COMMON_SCREW_RIGHT].m_bConnected)
+	{
+		//m_UdpTester[0].Connect_Tester(stTester.dwTesterIP[0], stTester.nTesterPort[0], stTester.strTesterConnect[0], 1);
+		m_TCPCommon[IP_COMMON_SCREW_RIGHT].Send_Common_Communication(eScrew_Communication_Start);
+	}
+	else
+	{
+		strTemp = "192.168.1.2";
+		DWORD dwTesterIP;
+		int nTesterPort = 4545;
+		dwTesterIP = (DWORD)_ttof(strTemp);
+		CString strTesterConnect;
+		m_TCPCommon[IP_COMMON_SCREW_RIGHT].Connect_Common(strTemp, nTesterPort);
+
+		COMMON->DoEvent(100);
+		m_TCPCommon[IP_COMMON_SCREW_RIGHT].InitVariable(IP_COMMON_SCREW_RIGHT);
+		m_TCPCommon[IP_COMMON_SCREW_RIGHT].Send_Common_Communication(eScrew_Communication_Start);
+
+		m_TCPCommon[IP_COMMON_SCREW_RIGHT].SetOwnerHWND(this->m_hWnd);
+	}
+}
+
+
+void CDlgCommConfiguration::OnBnClickedBtnLanDisconnectCommon2()
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].Send_Common_Communication(eScrew_Communication_Stop);
+	m_TCPCommon[IP_COMMON_SCREW_RIGHT].CloseSocket();
+}
+
+
+void CDlgCommConfiguration::OnBnClickedBtnLanSubCommonPSet2()
+{
+	// TODO: Add your control notification handler code here
+	if (m_TCPCommon[IP_COMMON_SCREW_RIGHT].m_bConnected)
+		m_TCPCommon[IP_COMMON_SCREW_RIGHT].Send_Common_Communication(eScrew_DataMessageSubscribe, 15);
+}
+
+
+void CDlgCommConfiguration::OnBnClickedBtnLanSubCommonTighterningResult2()
+{
+	// TODO: Add your control notification handler code here
+}

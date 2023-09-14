@@ -230,28 +230,8 @@ void CLogSemco::CreateFolder(LPCTSTR lpszPath)
 
 void  CLogSemco::Init()
 {
-	CString strTime;
-
-	SYSTEMTIME tm;
-	GetLocalTime(&tm);
-	strTime.Format(_T("%04d-%02d-%02d %02d:%02d:%02d.%03d"), tm.wYear, tm.wMonth, tm.wDay, tm.wHour, tm.wMinute, tm.wSecond, tm.wMilliseconds);
-
-	CString strLog;
-	strLog.Format(_T("M,-,-,Idle,EVENT:PROGRAM_START,Start,"));
-
-	CsvOut(strTime, strLog);
 }
 
 void CLogSemco::Exit()
 {
-	CString strTime;
-
-	SYSTEMTIME tm;
-	GetLocalTime(&tm);
-	strTime.Format(_T("%04d-%02d-%02d %02d:%02d:%02d.%03d"), tm.wYear, tm.wMonth, tm.wDay, tm.wHour, tm.wMinute, tm.wSecond, tm.wMilliseconds);
-
-	CString strLog;
-	strLog.Format(_T("M,-,-,Idle,EVENT:PROGRAM_END,Start,"));
-
-	CsvOut(strTime, strLog);
 }

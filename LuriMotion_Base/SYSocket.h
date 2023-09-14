@@ -63,7 +63,21 @@ enum
 	eComMode_MAX
 };
 
-
+#if (20230905)
+enum
+{
+	eScrew_NULL						= 0,
+	eScrew_Communication_Start		= 1,
+	eScrew_Communication_Start_ACK	= 2,
+	eScrew_Communication_Stop		= 3,
+	eScrew_Communication_Stop_Nak	= 4,
+	eScrew_Communication_Stop_ACK	= 5,
+	eScrew_DataMessageRequest		= 6,
+	eScrew_Share_7 = 7,
+	eScrew_DataMessageSubscribe		= 8,
+	eScrew_MAX
+};
+#endif
 class CSYSocket : public CWnd
 {
 public:

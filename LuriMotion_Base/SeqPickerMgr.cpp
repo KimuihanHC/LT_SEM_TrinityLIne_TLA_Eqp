@@ -4,6 +4,9 @@
 #include "LuriMotion_BaseDlg.h"
 
 #include "Util/BasicTimer.h"
+#if (20230905)
+//#include "Common_TCP.h"
+#endif
 
 CSeqPickerMgr::CSeqPickerMgr()
 {
@@ -108,7 +111,7 @@ UINT CSeqPickerMgr::RunProcess()
 	//			CString szLog;
 
 				Log(_T("Picker Mgr =========> %s(start)"), g_szSeqName_PickerMgr[GetStep()]);
-				SemcoLog(_T("O,-,-,Run,TLA:%s,Start,"), g_szSeqName_PickerMgr[GetStep()]);
+				SemcoLog(_T("0,,,Run,%s,Start,"), g_szSeqName_PickerMgr[GetStep()]);
 	//			WRITE_MAIN_LOG(szLog);
 			
 				StartTimer();
@@ -124,7 +127,7 @@ UINT CSeqPickerMgr::RunProcess()
 	//			CString szElaped;
 				Log(_T("Picker Mgr =========> %s(end), ResultCode:%d, Elaped:%d ms"), 
 					g_szSeqName_PickerMgr[GetOldStep()],err, timer.GetElapsedTime(lt::CBasicTimer::Unit::Milliseconds));
-				SemcoLog(_T("O,-,-,Run,TLA:%s,End,Elaped=%dmsec"), g_szSeqName_PickerMgr[GetOldStep()], timer.GetElapsedTime(lt::CBasicTimer::Unit::Milliseconds));
+				SemcoLog(_T("0,,,Run,%s,End,Elaped=%dmsec"), g_szSeqName_PickerMgr[GetStep()], timer.GetElapsedTime(lt::CBasicTimer::Unit::Milliseconds));
 	//			WRITE_MAIN_LOG(szElaped);
 			}
 		}

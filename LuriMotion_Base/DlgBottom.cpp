@@ -260,7 +260,6 @@ void CDlgBottom::OnBnClickedBtnTest1()
 	m_nCurrentSelectDlgNum = 1;
 	pParrentDlg->ChangeMainUi(m_nCurrentSelectDlgNum);
 	ChangeButtonState(m_nCurrentSelectDlgNum);
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Main_Button_Click,Start,"));
 }
 // [21.1017.13] Modified 
 void CDlgBottom::OnBnClickedBtnTest2()
@@ -276,7 +275,6 @@ void CDlgBottom::OnBnClickedBtnTest2()
 	m_nCurrentSelectDlgNum = 2;
 	pParrentDlg->ChangeMainUi(m_nCurrentSelectDlgNum);
 	ChangeButtonState(m_nCurrentSelectDlgNum);
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Maintenance_Button_Click,Start,"));
 }
 // [21.1017.14] Modified 
 void CDlgBottom::OnBnClickedBtnTest3()
@@ -303,7 +301,6 @@ void CDlgBottom::OnBnClickedBtnTest3()
 	m_nCurrentSelectDlgNum = 3;
 	pParrentDlg->ChangeMainUi(m_nCurrentSelectDlgNum);
 	ChangeButtonState(m_nCurrentSelectDlgNum);
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_DIO_Button_Click,Start,"));
 }
 // [21.1017.15] Modified 
 void CDlgBottom::OnBnClickedBtnTest4()
@@ -327,7 +324,6 @@ void CDlgBottom::OnBnClickedBtnTest4()
 	m_nCurrentSelectDlgNum = 4;
 	pParrentDlg->ChangeMainUi(m_nCurrentSelectDlgNum);
 	ChangeButtonState(m_nCurrentSelectDlgNum);
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Equipment_Button_Click,Start,"));
 }
 void CDlgBottom::OnBnClickedBtnTest5()
 {
@@ -343,7 +339,6 @@ void CDlgBottom::OnBnClickedBtnTest5()
 	m_nCurrentSelectDlgNum = 5;
 	pParrentDlg->ChangeMainUi(m_nCurrentSelectDlgNum);
 	ChangeButtonState(m_nCurrentSelectDlgNum);
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Log_Button_Click,Start,"));
 
 	//if (COMMON->GetPermissionGrade() < 2)
 	//{
@@ -373,7 +368,6 @@ void CDlgBottom::OnBnClickedBtnTest6()
 
 
 	pParrentDlg->Hide_Program();
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Hide_Button_Click,Start,"));
 
 	//ChangeButtonState(6);
 
@@ -393,7 +387,6 @@ void CDlgBottom::OnBnClickedBtnTest7()
 	CLuriMotion_BaseDlg *pParrentDlg = (CLuriMotion_BaseDlg*)AfxGetApp()->GetMainWnd();
 
 	pParrentDlg->Hide_Program();
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Hide_Button_Click,Start,"));
 }
 
 void CDlgBottom::OnBnClickedBtnTest8()
@@ -411,7 +404,6 @@ void CDlgBottom::OnBnClickedBtnTest8()
 		nState = AfxMessageBox(_T("프로그램을 종료하시겠습니까?"), MB_YESNO);
 	else
 		nState = AfxMessageBox(_T("Do you want to exit this program?"), MB_YESNO);
-	WRITE_SEMCO_LOG(_T("M,-,-,Run,EVENT:Bottom_Exit_Button_Click,Start,"));
 	if(nState == IDYES)pParrentDlg->OnClose();
 }
 

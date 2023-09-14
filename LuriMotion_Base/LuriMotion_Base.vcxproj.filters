@@ -64,6 +64,9 @@
     <Filter Include="소스 파일\Dialog_Main">
       <UniqueIdentifier>{5d2ee70b-0089-47d5-ab7d-2623c810c36c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Common_TCP">
+      <UniqueIdentifier>{6ed89a59-1f34-42b1-973f-f77ef7ca219d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LuriMotion_Base.h">
@@ -375,6 +378,9 @@
     <ClInclude Include="Log\LogSemco.h">
       <Filter>소스 파일\Log</Filter>
     </ClInclude>
+    <ClInclude Include="Common_TCP.h">
+      <Filter>소스 파일\Common_TCP</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LuriMotion_Base.cpp">
@@ -397,6 +403,9 @@
     </ClCompile>
     <ClCompile Include="Ajin_IO.cpp">
       <Filter>소스 파일\Motion\Ajin</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence.cpp">
+      <Filter>소스 파일\Sequence</Filter>
     </ClCompile>
     <ClCompile Include="EzSock.cpp">
       <Filter>소스 파일\Socket</Filter>
@@ -623,8 +632,8 @@
     <ClCompile Include="Log\LogSemco.cpp">
       <Filter>소스 파일\Log</Filter>
     </ClCompile>
-    <ClCompile Include="Sequence.cpp">
-      <Filter>소스 파일\Socket</Filter>
+    <ClCompile Include="Common_TCP.cpp">
+      <Filter>소스 파일\Common_TCP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

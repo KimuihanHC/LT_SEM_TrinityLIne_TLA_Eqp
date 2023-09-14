@@ -14,6 +14,38 @@ struct SendingCommand
 	//////////////////////////////////////////////////////////////////////////////////
 };
 
+struct ReceivingCommand
+{
+	//////////////////////////////////////////////////////////////////////////////////
+	// System setting
+	static constexpr uint16 Model = 0x0104;
+	//
+	//////////////////////////////////////////////////////////////////////////////////
+};
+
+CIcsClientTester::CIcsClientTester()
+: CIcsClient()
+{
+	//////////////////////////////////////////////////////////////////////////////////
+	// System setting
+	m_pModelEventNotifier = new ModelEventNotifierImpl();
+
+	AddRequestProcedure(ReceivingCommand::Model,
+						reinterpret_cast<RequestProc>(
+							&CIcsClientTester::ProcRequestModel));
+	//
+	//////////////////////////////////////////////////////////////////////////////////
+}
+
+CIcsClientTester::~CIcsClientTester()
+{
+	//////////////////////////////////////////////////////////////////////////////////
+	// System setting
+	delete m_pModelEventNotifier;
+	//
+	//////////////////////////////////////////////////////////////////////////////////
+}
+
 uint32 CIcsClientTester::CommandTestResult(const STestResult & testResult,
 										   uint64 timeout)
 {
@@ -28,4 +60,31 @@ uint32 CIcsClientTester::CommandTestResult(const STestResult & testResult,
 						   Format("%d", testResult.para)
 					   },
 					   timeout);
+}
+
+bool CIcsClientTester::ProcRequestModel(const DataCntr & dataCntr,
+										DataCntr & /*resultDataCntr*/)
+{
+	if(dataCntr.size() < 2)
+		return false;
+
+	return RaiseModelEvent(
+		{
+			static_cast<uint16>(strtoul(dataCntr[0].c_str(), nullptr, 10)),
+			static_cast<uint16>(strtoul(dataCntr[1].c_str(), nullptr, 10))
+		}
+	);
+}
+
+bool CIcsClientTester::RaiseModelEvent(ModelArgs::Args & args)
+{
+	return RaiseEvent(*this,
+					  *m_pModelEventNotifier,
+					  args);
+}
+
+ModelEventNotifier<CIcsClientTester> &
+CIcsClientTester::GetModelEventNotifier()
+{
+	return *m_pModelEventNotifier;
 }

@@ -12,7 +12,6 @@ struct SendingCommand
 	static constexpr uint16 TimeSync = 0x0100;
 	static constexpr uint16 UserLevel = 0x0101;
 	static constexpr uint16 Language = 0x0102;
-	static constexpr uint16 Model = 0x0104;
 	//
 	//////////////////////////////////////////////////////////////////////////////////
 
@@ -29,7 +28,6 @@ struct SendingCommand
 
 	//////////////////////////////////////////////////////////////////////////////////
 	// Operation
-	static constexpr uint16 OperationActiveStatus = 0x0301;
 	static constexpr uint16 SocketAccepting = 0x0311;
 	static constexpr uint16 EjectAccepting = 0x0312;
 	static constexpr uint16 ProductionStartEnd = 0x0313;
@@ -166,12 +164,7 @@ uint32 CIcsRemote::CommandUserLevel(const SUserLevel & userLevel,
 {
 	return ProcCommand(SendingCommand::UserLevel,
 					   {
-						   Format("%d", userLevel.userLevel),
-						   #if defined(UNICODE)
-						   ToMultiByte(userLevel.userId),
-						   #else
-						   userLevel.userId,
-						   #endif
+						   Format("%d", userLevel.userLevel)
 					   },
 					   timeout);
 }
@@ -182,17 +175,6 @@ uint32 CIcsRemote::CommandLanguage(const SLanguage & language,
 	return ProcCommand(SendingCommand::Language,
 					   {
 						   Format("%d", language.language)
-					   },
-					   timeout);
-}
-
-uint32 CIcsRemote::CommandModel(const SModel & model,
-								uint64 timeout)
-{
-	return ProcCommand(SendingCommand::Model,
-					   {
-						   Format("%d", model.model),
-						   Format("%d", model.socketType)
 					   },
 					   timeout);
 }
@@ -235,16 +217,6 @@ uint32 CIcsRemote::CommandUiVisible(const SUiVisible & uiVisible,
 						   Format("%d", uiVisible.cmdShow)
 					   },
 					   timeout);
-}
-
-uint32 CIcsRemote::CommandOperationActiveStatus(const SOperationActiveStatus & operationActiveStatus,
-	uint64 timeout)
-{
-	return ProcCommand(SendingCommand::OperationActiveStatus,
-					  {
-						  Format("%d", operationActiveStatus.status),
-					  },
-					  timeout);
 }
 
 uint32 CIcsRemote::CommandSocketAccepting(const SSocketAccepting & socketAccepting,

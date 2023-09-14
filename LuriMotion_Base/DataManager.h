@@ -21,7 +21,7 @@ private:
 	ERROR_LIST			m_stError;
 
 	ST_OptSemiAuto		m_stSemiAuto;
-	
+
 public:
 	void	Init();
 

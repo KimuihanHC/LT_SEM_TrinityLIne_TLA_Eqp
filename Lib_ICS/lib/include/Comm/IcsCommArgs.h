@@ -19,7 +19,6 @@ namespace lt
 	struct SUserLevel
 	{
 		uint32 userLevel = 0;
-		ConstStringT const userId = nullptr;
 	};
 
 	struct SLanguage
@@ -61,11 +60,6 @@ namespace lt
 	struct SOperationMode
 	{
 		uint32 mode = 0;
-	};
-
-	struct SOperationActiveStatus
-	{
-		uint32 status = 0;
 	};
 
 	struct SSocketRfid

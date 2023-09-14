@@ -5,6 +5,15 @@
 
 using namespace lt;
 
+struct SendingCommand
+{
+	//////////////////////////////////////////////////////////////////////////////////
+	// System setting
+	static constexpr uint16 Model = 0x0104;
+	//
+	//////////////////////////////////////////////////////////////////////////////////
+};
+
 struct ReceivingCommand
 {
 	//////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +44,17 @@ CIcsRemoteTester::~CIcsRemoteTester()
 	delete m_pTestResultEventNotifier;
 	//
 	//////////////////////////////////////////////////////////////////////////////////
+}
+
+uint32 CIcsRemoteTester::CommandModel(const SModel & model,
+									  uint64 timeout)
+{
+	return ProcCommand(SendingCommand::Model,
+					   {
+						   Format("%d", model.model),
+						   Format("%d", model.socketType)
+					   },
+					   timeout);
 }
 
 bool CIcsRemoteTester::ProcRequestTestResult(const DataCntr & dataCntr,

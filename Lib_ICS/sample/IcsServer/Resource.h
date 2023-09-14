@@ -1,6 +1,6 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by IcsServer.rc
+// Microsoft Visual C++에서 생성한 포함 파일입니다.
+// IcsServer.rc에서 사용되고 있습니다.
 //
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
@@ -122,10 +122,8 @@
 #define IDC_BUTTON_MINIMIZE             2107
 #define IDC_BUTTON_RESTORE              2108
 #define IDC_EDIT_SOCKET_TYPE            2109
+#define IDC_EDIT_FORCE_EJECT2           2110
 #define IDC_EDIT_PRODUCTION_START_END   2110
-#define IDC_BUTTON_ACTIVE               2110
-#define IDC_EDIT_USER_ID                2111
-#define IDC_BUTTON_INACTIVE             2112
 
 // Next default values for new objects
 // 

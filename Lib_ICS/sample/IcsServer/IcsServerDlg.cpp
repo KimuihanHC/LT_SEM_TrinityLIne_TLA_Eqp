@@ -217,8 +217,6 @@ BEGIN_MESSAGE_MAP(CIcsServerDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_EJECT_ACCEPT, &CIcsServerDlg::OnBnClickedButtonEjectAccept)
 	ON_BN_CLICKED(IDC_BUTTON_PRODUCTION_START_END, &CIcsServerDlg::OnBnClickedButtonProductionStartEnd)
 	ON_BN_CLICKED(IDC_BUTTON_FORCE_EJECT, &CIcsServerDlg::OnBnClickedButtonForceEject)
-	ON_BN_CLICKED(IDC_BUTTON_ACTIVE, &CIcsServerDlg::OnBnClickedButtonActive)
-	ON_BN_CLICKED(IDC_BUTTON_INACTIVE, &CIcsServerDlg::OnBnClickedButtonInactive)
 END_MESSAGE_MAP()
 
 
@@ -624,14 +622,13 @@ void CIcsServerDlg::EnableCommunicationCtrls(bool enable)
 	{
 		{ IDC_BUTTON_TIME_SYNC, true, true, true },
 		{ IDC_EDIT_USER_LEVEL, true, true, true },
-		{ IDC_EDIT_USER_ID, true, true, true },
 		{ IDC_BUTTON_USER_LEVEL, true, true, true },
 		{ IDC_EDIT_LANGUAGE, true, true, true },
 		{ IDC_BUTTON_LANGUAGE, true, true, true },
 		{ IDC_EDIT_EQUIPMENT_ID, true, true, true },
-		{ IDC_EDIT_MODEL, true, true, true },
-		{ IDC_EDIT_SOCKET_TYPE, true, true, true },
-		{ IDC_BUTTON_MODEL, true, true, true },
+		{ IDC_EDIT_MODEL, false, true, false },
+		{ IDC_EDIT_SOCKET_TYPE, false, true, false },
+		{ IDC_BUTTON_MODEL, false, true, false },
 		{ IDC_BUTTON_INITIALIZE, true, true, true },
 		{ IDC_BUTTON_RESET, true, true, true },
 		{ IDC_BUTTON_RUN, true, true, true },
@@ -743,7 +740,6 @@ void CIcsServerDlg::ClearData()
 	static constexpr int Ids[] =
 	{
 		IDC_EDIT_USER_LEVEL,
-		IDC_EDIT_USER_ID,
 		IDC_EDIT_LANGUAGE,
 		IDC_EDIT_EQUIPMENT_ID,
 		IDC_EDIT_MODEL,
@@ -1087,13 +1083,9 @@ void CIcsServerDlg::SendTimeSync()
 
 void CIcsServerDlg::SendUserLevel()
 {
-	CString strUserId;
-	GetDlgItemText(IDC_EDIT_USER_ID, strUserId);
-
 	lt::SUserLevel userLevel =
 	{
-		static_cast<lt::uint32>(GetDlgItemInt(IDC_EDIT_USER_LEVEL)),
-		strUserId
+		static_cast<lt::uint32>(GetDlgItemInt(IDC_EDIT_USER_LEVEL))
 	};
 
 	InvokeRemote(&lt::CIcsRemote::CommandUserLevel,
@@ -1110,19 +1102,6 @@ void CIcsServerDlg::SendLanguage()
 
 	InvokeRemote(&lt::CIcsRemote::CommandLanguage,
 				 std::forward<const lt::SLanguage &>(language),
-				 std::forward<lt::uint64>(1000));
-}
-
-void CIcsServerDlg::SendModel()
-{
-	lt::SModel model =
-	{
-		static_cast<lt::uint32>(GetDlgItemInt(IDC_EDIT_MODEL)),
-		static_cast<lt::uint32>(GetDlgItemInt(IDC_EDIT_SOCKET_TYPE))
-	};
-
-	InvokeRemote(&lt::CIcsRemote::CommandModel,
-				 std::forward<const lt::SModel &>(model),
 				 std::forward<lt::uint64>(1000));
 }
 
@@ -1488,6 +1467,21 @@ void CIcsServerDlg::OnUnloadingEvent(UnloadingEventArgs & eventArgs)
 	eventArgs.Cancel();
 }
 
+void CIcsServerDlg::SendModel()
+{
+	lt::SModel model =
+	{
+		static_cast<lt::uint32>(GetDlgItemInt(IDC_EDIT_MODEL)),
+		static_cast<lt::uint32>(GetDlgItemInt(IDC_EDIT_SOCKET_TYPE))
+	};
+
+	InvokeRemote(reinterpret_cast<
+				 lt::uint32 (lt::CIcsRemote::*)(const lt::SModel &, lt::uint64)>(
+					 &lt::CIcsRemoteTester::CommandModel),
+				 std::forward<const lt::SModel &>(model),
+				 std::forward<lt::uint64>(1000));
+}
+
 void CIcsServerDlg::OnTestResultEvent(TestResultEventArgs & eventArgs)
 {
 	auto & args = eventArgs.GetArgs();
@@ -1505,28 +1499,4 @@ void CIcsServerDlg::OnTestResultEvent(TestResultEventArgs & eventArgs)
 
 	args.SetResult(true);
 	eventArgs.Cancel();
-}
-
-void CIcsServerDlg::OnBnClickedButtonActive()
-{
-	lt::SOperationActiveStatus language =
-	{
-		static_cast<lt::uint32>(1)
-	};
-
-	InvokeRemote(&lt::CIcsRemote::CommandOperationActiveStatus,
-		std::forward<const lt::SOperationActiveStatus &>(language),
-		std::forward<lt::uint64>(1000));
-}
-
-void CIcsServerDlg::OnBnClickedButtonInactive()
-{
-	lt::SOperationActiveStatus language =
-	{
-		static_cast<lt::uint32>(0)
-	};
-
-	InvokeRemote(&lt::CIcsRemote::CommandOperationActiveStatus,
-		std::forward<const lt::SOperationActiveStatus &>(language),
-		std::forward<lt::uint64>(1000));
 }

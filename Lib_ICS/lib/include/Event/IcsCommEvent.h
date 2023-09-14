@@ -134,15 +134,6 @@ namespace lt
 	using OperationModeEventNotifier =
 		IEventNotifier<OperationModeEventArgs<TypeSender>>;
 
-	using OperationActiveStatusArgs =
-		CIcsRequestTypedArgs<const SOperationActiveStatus>;
-	template<typename TypeSender>
-	using OperationActiveStatusEventArgs =
-		ICancellableEventArgs<TypeSender, OperationActiveStatusArgs>;
-	template<typename TypeSender>
-	using OperationActiveStatusEventNotifier =
-		IEventNotifier<OperationActiveStatusEventArgs<TypeSender>>;
-
 	using SocketRequestArgs =
 		CIcsRequestTypedArgs<const SSocketRfid>;
 	template<typename TypeSender>

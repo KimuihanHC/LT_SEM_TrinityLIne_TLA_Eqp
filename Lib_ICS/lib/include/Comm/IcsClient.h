@@ -28,8 +28,6 @@ namespace lt
 			GetUserLevelEventNotifier();
 		LanguageEventNotifier<CIcsClient> &
 			GetLanguageEventNotifier();
-		ModelEventNotifier<CIcsClient> &
-			GetModelEventNotifier();
 		//
 		//////////////////////////////////////////////////////////////////////////////////
 
@@ -72,10 +70,6 @@ namespace lt
 		uint32 CommandConveyorStatusRequest(SConveyorStatus2 & conveyorStatus,
 											uint64 timeout);
 
-
-		OperationActiveStatusEventNotifier<CIcsClient> &
-			GetOperationActiveStatusEventNotifier();
-
 		SocketAcceptingEventNotifier<CIcsClient> &
 			GetSocketAcceptingEventNotifier();
 		EjectAcceptingEventNotifier<CIcsClient> &
@@ -96,13 +90,10 @@ namespace lt
 								  DataCntr & resultDataCntr);
 		bool ProcRequestLanguage(const DataCntr & dataCntr,
 								 DataCntr & resultDataCntr);
-		bool ProcRequestModel(const DataCntr & dataCntr,
-							  DataCntr & resultDataCntr);
 
 		bool RaiseTimeSyncEvent(TimeSyncArgs::Args & args);
 		bool RaiseUserLevelEvent(UserLevelArgs::Args & args);
 		bool RaiseLanguageEvent(LanguageArgs::Args & args);
-		bool RaiseModelEvent(ModelArgs::Args & args);
 		//
 		//////////////////////////////////////////////////////////////////////////////////
 
@@ -132,10 +123,6 @@ namespace lt
 
 		//////////////////////////////////////////////////////////////////////////////////
 		// Operation
-		bool ProcRequestOperationActiveStatus(const DataCntr & dataCntr,
-											  DataCntr & resultDataCntr);
-
-
 		bool ProcRequestSocketAccepting(const DataCntr & dataCntr,
 										DataCntr & resultDataCntr);
 		bool ProcRequestEjectAccepting(const DataCntr & dataCntr,
@@ -144,8 +131,6 @@ namespace lt
 									DataCntr & resultDataCntr);
 		bool ProcForceEject(const DataCntr & dataCntr,
 							DataCntr & resultDataCntr);
-
-		bool RaiseOperationActiveStatusEvent(OperationActiveStatusArgs::Args & args);
 
 		bool RaiseSocketAcceptingEvent(SocketAcceptingArgs::Args & args);
 		bool RaiseEjectAcceptingEvent(EjectAcceptingArgs::Args & args);
@@ -163,13 +148,10 @@ namespace lt
 			CCancellableEventNotifier<CIcsClient, UserLevelArgs>;
 		using LanguageEventNotifierImpl =
 			CCancellableEventNotifier<CIcsClient, LanguageArgs>;
-		using ModelEventNotifierImpl =
-			CCancellableEventNotifier<CIcsClient, ModelArgs>;
 
 		TimeSyncEventNotifierImpl * m_pTimeSyncEventNotifier = nullptr;
 		UserLevelEventNotifierImpl * m_pUserLevelEventNotifier = nullptr;
 		LanguageEventNotifierImpl * m_pLanguageEventNotifier = nullptr;
-		ModelEventNotifierImpl * m_pModelEventNotifier = nullptr;
 		//
 		//////////////////////////////////////////////////////////////////////////////////
 
@@ -199,9 +181,6 @@ namespace lt
 
 		//////////////////////////////////////////////////////////////////////////////////
 		// Operation
-		using OperationActiveStatusEventNotifierImpl =
-			CCancellableEventNotifier<CIcsClient, OperationActiveStatusArgs>;
-
 		using SocketAcceptingEventNotifierImpl =
 			CCancellableEventNotifier<CIcsClient, SocketAcceptingArgs>;
 		using EjectAcceptingEventNotifierImpl =
@@ -210,8 +189,6 @@ namespace lt
 			CCancellableEventNotifier<CIcsClient, ProductionStartEndArgs>;
 		using ForceEjectEventNotifierImpl =
 			CCancellableEventNotifier<CIcsClient, ForceEjectArgs>;
-
-		OperationActiveStatusEventNotifierImpl * m_pOperationActiveStatusEventNotifier = nullptr;
 
 		SocketAcceptingEventNotifierImpl * m_pSocketAcceptingEventNotifier = nullptr;
 		EjectAcceptingEventNotifierImpl * m_pEjectAcceptingEventNotifier = nullptr;

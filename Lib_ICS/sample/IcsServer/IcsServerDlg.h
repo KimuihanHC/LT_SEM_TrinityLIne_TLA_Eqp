@@ -106,7 +106,6 @@ private:
 	void SendTimeSync();
 	void SendUserLevel();
 	void SendLanguage();
-	void SendModel();
 	void SendInitialize();
 	void SendReset();
 	void SendRun();
@@ -160,6 +159,8 @@ private:
 	void OnUnloadingEvent(UnloadingEventArgs & eventArgs);
 
 	// Tester
+	void SendModel();
+
 	using TestResultEventArgs =
 		lt::TestResultEventArgs<lt::CIcsRemoteTester>;
 
@@ -237,7 +238,4 @@ private:
 		lt::CEventMfnListener<CIcsServerDlg, TestResultEventArgs>;
 
 	TestResultEventListener * m_pTestResultEventListener = nullptr;
-public:
-	afx_msg void OnBnClickedButtonActive();
-	afx_msg void OnBnClickedButtonInactive();
 };

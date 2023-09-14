@@ -1,6 +1,6 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by IcsClient.rc
+// Microsoft Visual C++에서 생성한 포함 파일입니다.
+// IcsClient.rc에서 사용되고 있습니다.
 //
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
@@ -71,10 +71,8 @@
 #define IDC_BUTTON_CONVEYOR_STATUS_REQUEST 2056
 #define IDC_EDIT_FORCE_EJECT            2057
 #define IDC_EDIT_SOCKET_TYPE            2058
+#define IDC_EDIT_FORCE_EJECT2           2059
 #define IDC_EDIT_PRODUCTION_START_END   2059
-#define IDC_EDIT_USER_ID                2060
-#define IDC_EDIT_SOCKET_ACCEPT_BARCODE2 2061
-#define IDC_EDIT_ACTIVE_STATUS          2061
 
 // Next default values for new objects
 // 

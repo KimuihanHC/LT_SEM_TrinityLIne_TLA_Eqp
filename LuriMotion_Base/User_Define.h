@@ -2069,3 +2069,61 @@ enum class enConfiguration
 	Device,
 	SEMCOTest
 };
+
+
+#if (20230905)
+static LPCTSTR m_szComponentLan_Common_Sub_Eng[] =
+{
+	_T("SCREW Left Connect"),
+	_T("SCREW Right Connect"),
+	_T(""),
+};
+static LPCTSTR m_szComponentLan_Common_Sub_Kor[] =
+{
+	_T("SCREW 왼쪽 연결"),
+	_T("SCREW 오른쪽 연결"),
+	_T(""),
+};
+static LPCTSTR m_szIP_Common_UI_Text[] =
+{
+	_T("SCREW Left"),
+	_T("SCREW Right"),
+	_T(""),
+};
+enum {
+	IP_COMMON_SCREW_LEFT,
+	IP_COMMON_SCREW_RIGHT,
+	IP_COMMON_MAX
+};
+static LPCTSTR m_szScrew_Parameter_Sub_Eng[] =
+{
+	_T("NULL"),
+	_T("UNLOCK"),
+	_T("LOCK 1"),
+	_T("LOCK 2"),
+	_T(""),
+};
+static LPCTSTR m_szScrew_Parameter_Sub_Kor[] =
+{
+	_T("NULL"),
+	_T("UNLOCK"),
+	_T("LOCK 1"),
+	_T("LOCK 2"),
+	_T(""),
+};
+static LPCTSTR m_szScrew_Parameter_UI_Text[] =
+{
+	_T("NULL"),
+	_T("UNLOCK"),
+	_T("LOCK 1"),
+	_T("LOCK 2"),
+	_T(""),
+};
+enum {
+	SCREW_PARAMTER_0,
+	SCREW_PARAMTER_1,
+	SCREW_PARAMTER_2,
+	SCREW_PARAMTER_3,
+	SCREW_PARAMTER_Max,
+};
+#endif

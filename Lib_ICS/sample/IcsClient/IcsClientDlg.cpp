@@ -108,8 +108,6 @@ CIcsClientDlg::CIcsClientDlg(CWnd* pParent /*=nullptr*/)
 		new UserLevelEventListener(this, &CIcsClientDlg::OnUserLevelEvent);
 	m_pLanguageEventListener =
 		new LanguageEventListener(this, &CIcsClientDlg::OnLanguageEvent);
-	m_pModelEventListener =
-		new ModelEventListener(this, &CIcsClientDlg::OnModelEvent);
 	m_pInitializationEventListener =
 		new InitializationEventListener(this, &CIcsClientDlg::OnInitializationEvent);
 	m_pResetEventListener =
@@ -122,11 +120,6 @@ CIcsClientDlg::CIcsClientDlg(CWnd* pParent /*=nullptr*/)
 		new BuzzerOffEventListener(this, &CIcsClientDlg::OnBuzzerOffEvent);
 	m_pUiVisibleEventListener =
 		new UiVisibleEventListener(this, &CIcsClientDlg::OnUiVisibleEvent);
-	
-	
-	m_pOperationActiveStatusEventListener = 
-		new OperationActiveStatusEventListener(this, &CIcsClientDlg::OnOperationActiveStatusEvent);
-
 	m_pSocketAcceptingEventListener =
 		new SocketAcceptingEventListener(this, &CIcsClientDlg::OnSocketAcceptingEvent);
 	m_pEjectAcceptingEventListener =
@@ -135,6 +128,10 @@ CIcsClientDlg::CIcsClientDlg(CWnd* pParent /*=nullptr*/)
 		new ProductionStartEndEventListener(this, &CIcsClientDlg::OnProductionStartEndEvent);
 	m_pForceEjectEventListener =
 		new ForceEjectEventListener(this, &CIcsClientDlg::OnForceEjectEvent);
+
+	// Tester
+	m_pModelEventListener =
+		new ModelEventListener(this, &CIcsClientDlg::OnModelEvent);
 }
 
 CIcsClientDlg::~CIcsClientDlg()
@@ -143,20 +140,19 @@ CIcsClientDlg::~CIcsClientDlg()
 	delete m_pTimeSyncEventListener;
 	delete m_pUserLevelEventListener;
 	delete m_pLanguageEventListener;
-	delete m_pModelEventListener;
 	delete m_pInitializationEventListener;
 	delete m_pResetEventListener;
 	delete m_pRunEventListener;
 	delete m_pStopEventListener;
 	delete m_pBuzzerOffEventListener;
 	delete m_pUiVisibleEventListener;
-
-	delete m_pOperationActiveStatusEventListener;
-
 	delete m_pSocketAcceptingEventListener;
 	delete m_pEjectAcceptingEventListener;
 	delete m_pProductionStartEndEventListener;
 	delete m_pForceEjectEventListener;
+
+	// Tester
+	delete m_pModelEventListener;
 
 	// Comm
 	m_pComm->GetCommConnectedEventNotifier() -=
@@ -487,11 +483,22 @@ bool CIcsClientDlg::CreateClient(int equipmentType)
 		return false;
 
 	if(equipmentType == 0)
+	{
 		m_pClient = new lt::CIcsClientLoUnloader();
+	}
 	else if(equipmentType == 1)
-		m_pClient = new lt::CIcsClientTester();
+	{
+		auto clientPtr = new lt::CIcsClientTester();
+
+		clientPtr->GetModelEventNotifier() +=
+			m_pModelEventListener;
+
+		m_pClient = clientPtr;
+	}
 	else
+	{
 		m_pClient = new lt::CIcsClient();
+	}
 
 	if(m_pClient == nullptr)
 		return false;
@@ -502,8 +509,6 @@ bool CIcsClientDlg::CreateClient(int equipmentType)
 		m_pUserLevelEventListener;
 	m_pClient->GetLanguageEventNotifier() +=
 		m_pLanguageEventListener;
-	m_pClient->GetModelEventNotifier() +=
-		m_pModelEventListener;
 	m_pClient->GetInitializationEventNotifier() +=
 		m_pInitializationEventListener;
 	m_pClient->GetResetEventNotifier() +=
@@ -516,11 +521,6 @@ bool CIcsClientDlg::CreateClient(int equipmentType)
 		m_pBuzzerOffEventListener;
 	m_pClient->GetUiVisibleEventNotifier() +=
 		m_pUiVisibleEventListener;
-
-
-	m_pClient->GetOperationActiveStatusEventNotifier() +=
-		m_pOperationActiveStatusEventListener;
-
 	m_pClient->GetSocketAcceptingEventNotifier() +=
 		m_pSocketAcceptingEventListener;
 	m_pClient->GetEjectAcceptingEventNotifier() +=
@@ -549,8 +549,6 @@ void CIcsClientDlg::RemoveClient()
 		m_pUserLevelEventListener;
 	m_pClient->GetLanguageEventNotifier() -=
 		m_pLanguageEventListener;
-	m_pClient->GetModelEventNotifier() -=
-		m_pModelEventListener;
 	m_pClient->GetInitializationEventNotifier() -=
 		m_pInitializationEventListener;
 	m_pClient->GetResetEventNotifier() -=
@@ -563,10 +561,6 @@ void CIcsClientDlg::RemoveClient()
 		m_pBuzzerOffEventListener;
 	m_pClient->GetUiVisibleEventNotifier() -=
 		m_pUiVisibleEventListener;
-
-	m_pClient->GetOperationActiveStatusEventNotifier() -=
-		m_pOperationActiveStatusEventListener;
-
 	m_pClient->GetSocketAcceptingEventNotifier() -=
 		m_pSocketAcceptingEventListener;
 	m_pClient->GetEjectAcceptingEventNotifier() -=
@@ -575,6 +569,14 @@ void CIcsClientDlg::RemoveClient()
 		m_pProductionStartEndEventListener;
 	m_pClient->GetForceEjectEventNotifier() -=
 		m_pForceEjectEventListener;
+
+	if(dynamic_cast<lt::CIcsClientTester *>(m_pClient) != nullptr)
+	{
+		auto clientPtr = dynamic_cast<lt::CIcsClientTester *>(m_pClient);
+
+		clientPtr->GetModelEventNotifier() -=
+			m_pModelEventListener;
+	}
 
 	m_pClient->SetLogDispatcher(nullptr);
 	delete m_pClient;
@@ -600,12 +602,11 @@ void CIcsClientDlg::EnableCommunicationCtrls(bool enable)
 	{
 		{ IDC_EDIT_TIME_SYNC, true, true, true },
 		{ IDC_EDIT_USER_LEVEL, true, true, true },
-		{ IDC_EDIT_USER_ID, true, true, true },
 		{ IDC_EDIT_LANGUAGE, true, true, true },
 		{ IDC_EDIT_EQUIPMENT_ID, true, true, true },
 		{ IDC_BUTTON_EQUIPMENT_ID, true, true, true },
-		{ IDC_EDIT_MODEL, true, true, true },
-		{ IDC_EDIT_SOCKET_TYPE, true, true, true },
+		{ IDC_EDIT_MODEL, false, true, false },
+		{ IDC_EDIT_SOCKET_TYPE, false, true, false },
 		{ IDC_EDIT_OPERATION_MODE, true, true, true },
 		{ IDC_BUTTON_OPERATION_MODE, true, true, true },
 		{ IDC_EDIT_LOADING_RFID, true, false, false },
@@ -622,7 +623,6 @@ void CIcsClientDlg::EnableCommunicationCtrls(bool enable)
 		{ IDC_BUTTON_TEST_RESULT, false, true, false },
 		{ IDC_EDIT_UNLOADING_RFID, true, false, false },
 		{ IDC_BUTTON_UNLOADING, true, false, false },
-		{ IDC_EDIT_ACTIVE_STATUS, true, true, true },
 		{ IDC_EDIT_SOCKET_REQUEST_RFID, true, true, true },
 		{ IDC_BUTTON_SOCKET_REQUEST, true, true, true },
 		{ IDC_EDIT_SOCKET_ACCEPT_RFID, true, true, true },
@@ -681,7 +681,6 @@ void CIcsClientDlg::ClearData()
 	{
 		IDC_EDIT_TIME_SYNC,
 		IDC_EDIT_USER_LEVEL,
-		IDC_EDIT_USER_ID,
 		IDC_EDIT_LANGUAGE,
 		IDC_EDIT_EQUIPMENT_ID,
 		IDC_EDIT_MODEL,
@@ -697,7 +696,6 @@ void CIcsClientDlg::ClearData()
 		IDC_EDIT_TEST_RESULT_ERROR,
 		IDC_EDIT_TEST_RESULT_PARA,
 		IDC_EDIT_UNLOADING_RFID,
-		IDC_EDIT_ACTIVE_STATUS,
 		IDC_EDIT_SOCKET_REQUEST_RFID,
 		IDC_EDIT_SOCKET_ACCEPT_RFID,
 		IDC_EDIT_SOCKET_ACCEPT_FLAG,
@@ -1105,12 +1103,10 @@ void CIcsClientDlg::OnUserLevelEvent(UserLevelEventArgs & eventArgs)
 	auto & reqArgs = args.GetTypedArgs();
 
 	m_pLogger->SetLogLevel(lt::LogLevel::Notice)
-		.AddLog(_T("User Level (user level = %d), (user id = %s)"),
-				reqArgs.userLevel,
-				reqArgs.userId);
+		.AddLog(_T("User Level (user level = %d)"),
+				reqArgs.userLevel);
 
 	SetDlgItemInt(IDC_EDIT_USER_LEVEL, reqArgs.userLevel);
-	SetDlgItemText(IDC_EDIT_USER_ID, reqArgs.userId);
 
 	args.SetResult(true);
 	eventArgs.Cancel();
@@ -1126,23 +1122,6 @@ void CIcsClientDlg::OnLanguageEvent(LanguageEventArgs & eventArgs)
 				reqArgs.language);
 
 	SetDlgItemInt(IDC_EDIT_LANGUAGE, reqArgs.language);
-
-	args.SetResult(true);
-	eventArgs.Cancel();
-}
-
-void CIcsClientDlg::OnModelEvent(ModelEventArgs & eventArgs)
-{
-	auto & args = eventArgs.GetArgs();
-	auto & reqArgs = args.GetTypedArgs();
-
-	m_pLogger->SetLogLevel(lt::LogLevel::Notice)
-		.AddLog(_T("Model (model = %d, socket type = %d)"),
-				reqArgs.model,
-				reqArgs.socketType);
-
-	SetDlgItemInt(IDC_EDIT_MODEL, reqArgs.model);
-	SetDlgItemInt(IDC_EDIT_SOCKET_TYPE, reqArgs.socketType);
 
 	args.SetResult(true);
 	eventArgs.Cancel();
@@ -1221,21 +1200,6 @@ void CIcsClientDlg::OnUiVisibleEvent(UiVisibleEventArgs & eventArgs)
 				reqArgs.cmdShow);
 
 	ShowWindow(reqArgs.cmdShow);
-
-	args.SetResult(true);
-	eventArgs.Cancel();
-}
-
-void CIcsClientDlg::OnOperationActiveStatusEvent(OperationActiveStatusEventArgs & eventArgs)
-{
-	auto & args = eventArgs.GetArgs();
-	auto & reqArgs = args.GetTypedArgs();
-
-	m_pLogger->SetLogLevel(lt::LogLevel::Notice)
-		.AddLog(_T("Active Status (Active = %d)"),
-			reqArgs.status);
-
-	SetDlgItemInt(IDC_EDIT_ACTIVE_STATUS, reqArgs.status);
 
 	args.SetResult(true);
 	eventArgs.Cancel();
@@ -1384,4 +1348,21 @@ void CIcsClientDlg::SendTestResult()
 					 &lt::CIcsClientTester::CommandTestResult),
 				 std::forward<const lt::STestResult &>(testResult),
 				 std::forward<lt::uint64>(1000));
+}
+
+void CIcsClientDlg::OnModelEvent(ModelEventArgs & eventArgs)
+{
+	auto & args = eventArgs.GetArgs();
+	auto & reqArgs = args.GetTypedArgs();
+
+	m_pLogger->SetLogLevel(lt::LogLevel::Notice)
+		.AddLog(_T("Model (model = %d, socket type = %d)"),
+				reqArgs.model,
+				reqArgs.socketType);
+
+	SetDlgItemInt(IDC_EDIT_MODEL, reqArgs.model);
+	SetDlgItemInt(IDC_EDIT_SOCKET_TYPE, reqArgs.socketType);
+
+	args.SetResult(true);
+	eventArgs.Cancel();
 }

@@ -1,6 +1,6 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Microsoft Visual C++에서 생성한 포함 파일입니다.
-// LuriMotion_Base.rc에서 사용되고 있습니다.
+// Microsoft Visual C++ generated include file.
+// Used by LuriMotion_Base.rc
 //
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
@@ -81,6 +81,7 @@
 #define IDC_BTN_ERROR_SOL_PART_1        1022
 #define IDC_BTN_DISCONNECT_RFID         1022
 #define IDC_BTN_ERROR_SOL_PART_2        1023
+#define IDC_BTN_DISCONNECT_TESTER3      1023
 #define IDC_BTN_ERROR_SOL_PART_3        1024
 #define IDC_BTN_ERROR_SOL_SELECT_1      1025
 #define IDC_BTN_ERROR_SOL_SELECT_2      1026
@@ -401,7 +402,9 @@
 #define IDC_EDIT_SAVEAS_MODEL_NAME      1272
 #define IDC_COMBO_SERIAL_20             1272
 #define IDC_EDIT_WAITTIME               1273
+#define IDC_EDIT_LAN_PORT_INPUT_COMMON1 1273
 #define IDC_EDIT_WAITTIME2              1274
+#define IDC_EDIT_LAN_PORT_INPUT_COMMON2 1274
 #define IDC_EDIT_Y_POS_1                1275
 #define IDC_EDIT_LAN_PORT_INPUT_RFID    1275
 #define IDC_ED_SLEEP_MODE_TIME          1275
@@ -460,8 +463,10 @@
 #define IDC_EDIT_A_S_POS_06             1291
 #define IDC_LIST2                       1292
 #define IDC_EDIT_Z_POS_10               1292
+#define IDC_IPADDRESS_LAN_COMMON1       1292
 #define IDC_LOTO_BUTTON_1               1293
 #define IDC_EDIT_Z_POS_11               1293
+#define IDC_IPADDRESS_LAN_COMMON2       1293
 #define IDC_LOTO_BUTTON_2               1294
 #define IDC_EDIT_R_POS_2                1294
 #define IDC_LOTO_BUTTON_3               1295
@@ -2025,6 +2030,18 @@
 #define IDI_ICON_RLED_GRN               52109
 #define IDI_ICON_RLED_RED               52110
 #define IDI_ICON_SAVE                   52111
+#define IDC_STC_LAN_CONNECT_COMMON1     53000
+#define IDC_STC_CONNECT_LAN_IP_COMMON1  53001
+#define IDC_BTN_LAN_CONNECT_COMMON1     53002
+#define IDC_BTN_LAN_DISCONNECT_COMMON1  53003
+#define IDC_BTN_LAN_SUB_COMMON_PSET1    53004
+#define IDC_BTN_LAN_SUB_COMMON_TIGHTERNING_RESULT1 53005
+#define IDC_STC_LAN_CONNECT_COMMON2     53006
+#define IDC_STC_CONNECT_LAN_IP_COMMON2  53007
+#define IDC_BTN_LAN_CONNECT_COMMON2     53008
+#define IDC_BTN_LAN_DISCONNECT_COMMON2  53009
+#define IDC_BTN_LAN_SUB_COMMON_PSET2    53010
+#define IDC_BTN_LAN_SUB_COMMON_TIGHTERNING_RESULT2 53011
 
 // Next default values for new objects
 // 

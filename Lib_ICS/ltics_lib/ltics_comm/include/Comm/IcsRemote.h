@@ -25,8 +25,6 @@ namespace lt
 								uint64 timeout);
 		uint32 CommandLanguage(const SLanguage & language,
 							   uint64 timeout);
-		uint32 CommandModel(const SModel & model,
-							uint64 timeout);
 
 		EquipmentIdEventNotifier<CIcsRemote> &
 			GetEquipmentIdEventNotifier();
@@ -47,9 +45,6 @@ namespace lt
 
 		//////////////////////////////////////////////////////////////////////////////////
 		// Operation
-		uint32 CommandOperationActiveStatus(const SOperationActiveStatus & operationActiveStatus,
-											uint64 timeout);
-
 		uint32 CommandSocketAccepting(const SSocketAccepting & socketAccepting,
 									  uint64 timeout);
 		uint32 CommandEjectAccepting(const SSocketRfid & socketRfid,

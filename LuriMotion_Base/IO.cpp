@@ -1562,7 +1562,6 @@ bool CIO::IO_O_Screw_Bolt_Unlock(BOOL bChk)
 	bool bRet = false;
 	clock_t startm = clock();
 #if(SET_INSPECTOR == SYS_TLA_ASSEMBLE) 
-
 	AJIN_IO->SetOFF(DIO_OUTPUT_Y2_01_DBUL_DRIVER_L_1);
 	AJIN_IO->SetOFF(DIO_OUTPUT_Y2_02_DBUL_DRIVER_L_2);
 	AJIN_IO->SetOFF(DIO_OUTPUT_Y2_03_DBUL_DRIVER_L_3);
